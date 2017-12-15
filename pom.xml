@@ -7,7 +7,6 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-	
 		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
