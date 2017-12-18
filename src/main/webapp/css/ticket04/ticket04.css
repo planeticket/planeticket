@@ -1,0 +1,237 @@
+/*-****************************** 进度图 *************************************/
+.banner{
+	background-color: #d2d2d2;
+	margin: 20px 0;
+}
+.banner .bannin{
+	width: 1002px;
+	height: 32px;
+	margin: 0 auto;
+	background:  url(../../img/ticket04/banner04_03.jpg) 0 0 no-repeat;
+
+}
+/*************************** 内容框主体结构 **********************************/
+.content{
+	width: 1000px;
+	overflow: hidden;
+	margin: 0 auto 30px;
+}
+.conright{
+	float: right;
+	border: 1px solid #3c3c3c;
+	padding: 20px;
+}
+.conleft{
+	float: left;
+	border: 1px solid #3c3c3c;
+	padding: 20px;
+	width: 524px;
+
+}
+
+/**************************** 左边内容 *********************************************/
+
+/* 标题 */
+.titbox{
+	overflow: hidden;
+	padding-bottom: 8px;
+	border-bottom: 1px dashed #6e6e6e;
+	margin-bottom: 9px;
+}
+.tith3{
+	float: left;
+	font-size: 16px;
+	color: #3c3c3c;
+	margin-right: 35px;
+}
+.titp{
+	float: left;
+	font-size: 12px;
+	color:#6e6e6e ;
+	height: 16px;
+	line-height: 23px;
+}
+/* 提交按钮 */
+.tijiaodingdan{
+	float: right;
+	width: 136px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	background:  url(../../img/common/tijiaodingdan_03.png) 0 0 no-repeat;
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 19px;
+	margin-top: 20px;
+}
+#tijiao{
+	margin-right: 0;
+}
+#xiugai{
+	float: right;
+	/* width: 136px; */
+	/* height: 36px;
+	line-height: 36px; */
+	/* text-align: center; */
+	background:  url(../../img/ticket04/fanhuijiantou_03.png) 0 3px no-repeat;
+	font-size: 12px;
+	color: #ffa000;
+	text-decoration: underline;
+	margin-right: 29px;
+	margin-top: 30px;
+	padding-left: 18px;
+}
+/* 乘客信息 */
+.passengerinfo{
+	padding: 13px 0 10px;
+	border-bottom: 1px solid #3c3c3c;
+	overflow: hidden;
+}
+.passengerinfo ul{
+	float: left;
+}
+
+.passtit li{
+	width: 66px;
+	margin-right: 35px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: right;
+
+}
+.details li{
+	font-size: 12px;
+	color: #3c3c3c;
+	margin-right: 30px;
+	margin-bottom: 8px;
+
+
+}
+.passengerinfo .detailstit li{
+	width: 50px;
+	text-align: justify;
+}
+
+
+
+
+
+
+
+
+/******************************************* 右边内容 ***********************************************/
+/* 右侧提示标题 */
+.conrighttit{
+	font-size: 12px;
+	color: #6e6e6e;
+	margin-bottom: 13px;
+}
+/* 机票信息 */
+.conrightticketinfo{
+	width: 347px;
+	border:1px solid #3c3c3c;
+	position: relative;
+	overflow: hidden;
+	padding-left: 17px;
+	padding-top: 17px;
+	padding-bottom: 17px;
+}
+.conrightticketinfoh3{
+	font-size: 14px;
+	color: #3c3c3c;
+	margin-bottom: 25px;
+}
+/* 出发到达 */
+.chufadaoda{
+	overflow: hidden;
+	margin: 0 auto;
+}
+.chufadaoda div{
+	float: left;
+	
+}
+.chufadaoda img{
+	float: left;
+	padding: 7px 33px;
+}
+
+.chufadaoda div p{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.chufa p{
+	text-align: right;
+	
+}
+.piaojiah3{
+	font-size: 14px;
+	color: #3c3c3c;
+	margin: 20px 0;
+}
+/* 修改航班信息 */
+.change{
+	overflow: hidden;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #3c3c3c;
+}
+.change a{
+	float: right;
+	margin-left: 40px;
+	font-size: 12px;
+	color: #3c3c3c;
+	text-decoration: underline;
+}
+#leftaaa{
+	float: left;
+	margin-left: 0;
+	color: #ffa000;
+}
+
+/* 应当支付 */
+.shouldpay{
+	width: 366px;
+	height: 16px;
+	line-height: 16px;
+	font-size: 16px;
+	padding: 10px 0;
+	margin-top: 24px;
+	position: relative;
+}
+.shouldpay .price{
+	font-size: 18px;
+	color: #cc0000;
+	position: absolute;
+	top: 0;
+	right: 13px;
+}
+.shouldpay p,.shouldpay var{
+	font-size: 12px;
+	color: #6e6e6e;
+}
+.shouldpay p{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+/* 金额信息 */
+.priceinfo{
+	width: 366px;
+	height: 14px;
+	overflow: hidden;
+	background:  url(../../img/ticket03/diandiandian_03.png) 0 10px repeat-x;
+	margin-top: 20px;
+}
+.priceinfo p{
+	float: left;
+	font-size: 12px;
+	color: #3c3c3c;
+	background-color: white;
+}
+
+.priceinfo var{
+	float: right;
+	font-size: 12px;
+	color: #3c3c3c;
+	background-color: white;
+}

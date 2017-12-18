@@ -1,0 +1,199 @@
+/*-****************************** 进度图 *************************************/
+.banner{
+	background-color: #d2d2d2;
+	margin: 20px 0;
+}
+.banner .bannin{
+	width: 1002px;
+	height: 32px;
+	margin: 0 auto;
+	background:  url(../../img/ticket05/banner05_03.jpg) 0 0 no-repeat;
+
+}
+
+/********************************** 内容框内容框内容框 ********************************/
+.content{
+	width: 960px;
+	margin: 0 auto 30px;
+	overflow: hidden;
+	border: 1px solid #3c3c3c;
+	padding: 20px;
+	margin-top: 20px;
+}
+/* 标题 */
+.tittle{
+	padding-bottom: 18px;
+	border-bottom: 1px dashed #6e6e6e;	
+	margin-bottom: 20px;
+}
+
+
+
+/************************************ 订单信息 ********************************************/
+.dingdantit{
+	float: left;
+	text-align: right;
+	width: 68px;
+	margin-right: 33px;
+	font-weight: bold;
+	font-size: 12px;
+
+}
+.dingdantit var{
+	font-weight: bold;
+}
+.dingdancon{
+	float: left;
+	font-size: 12px;
+	padding-bottom: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.zhifufangshi{
+	font-size: 16px;
+	color: #3c3c3c;
+	margin-right: 35px;
+	font-weight: bold;
+}
+.guize{
+	font-size: 12px;
+	color: #6e6e6e;
+
+}
+/* 登机提示 */
+.reminder{
+	padding-left: 22px;
+	font-size: 12px;
+	color: #6e6e6e;
+	height: 12px;
+	line-height: 12px;
+	background:  url(../../img/ticket03/gantanhao_03.png) 0 20px no-repeat;
+	padding-top: 20px;
+	border-top: 1px solid #6e6e6e;
+	margin-bottom: 20px;
+	clear: left;
+}
+/* 订单信息 */
+.biaozhundexuanze{
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+.biaozhundexuanze h3{
+	font-size: 14px;
+	color: #3c3c3c;
+}
+#gaizihao{
+	font-size: 16px;
+}
+/* 购买成功后 */
+/* .goumaichenggonghou{
+	font-size: 12px;
+	color: #6e6e6e;
+	padding-top: 20px;
+	border-top: 1px solid #6e6e6e;
+	margin-bottom: 20px;
+} */
+/* 支付方式 */
+.kaishizhifu{
+	
+	border-left: 1px solid #b5b5b5;
+	overflow: hidden;
+}
+.kaishizhifu div{
+	font-size: 14px;
+	border-top: 1px solid #b5b5b5;
+	width: 96px;
+	height: 38px;
+	border-right: 1px solid #b5b5b5;
+	float: left;
+	text-align: center;
+	line-height: 38px;
+	color: #3c3c3c;
+	/* font-weight: bold; */
+}
+.kaishizhifu .xinyongka{
+	color: white;
+	background-color: #b5b5b5;
+}
+.kaishizhifu .kuangjc{
+	width:957px ;
+	border: 1px solid #b5b5b5;
+	height: 240px;
+	clear: left;
+}
+/* 提交按钮 */
+.tijiaodingdan{
+	float: right;
+	width: 136px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	background:  url(../../img/common/tijiaodingdan_03.png) 0 0 no-repeat;
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 19px;
+	margin-top: 20px;
+}
+#tijiao{
+	margin-right: 0;
+}
+#xiugai{
+	float: right;
+	/* width: 136px; */
+	/* height: 36px;
+	line-height: 36px; */
+	/* text-align: center; */
+	background:  url(../../img/ticket04/fanhuijiantou_03.png) 0 3px no-repeat;
+	font-size: 12px;
+	color: #ffa000;
+	text-decoration: underline;
+	margin-right: 29px;
+	margin-top: 30px;
+	padding-left: 18px;
+}
+/*****************************支付方式*************************/
+#card{
+	margin-top: 17px;
+	overflow: hidden;
+}
+#card li{
+	width: 98px;
+	border: 1px solid #b5b5b5;
+	line-height: 40px;
+	text-align: center;
+	float: left;
+	background: #ffffff;
+	list-style: none;
+}
+#card .xinyong{
+	background: #b5b5b5;
+}
+#message{
+	border: 1px solid #b5b5b5;
+	width: 957px;
+	height: 241px;
+	margin-bottom: 20px;
+}
+#message li{
+	width: 957px;
+	height: 241px;
+	float: left;
+	display: none;
+	list-style: none;
+}
+#message .show{
+	display: block;
+}
