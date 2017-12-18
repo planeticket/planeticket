@@ -46,5 +46,3 @@ function autoMove(){
 }
 autoMove();
 
-
-

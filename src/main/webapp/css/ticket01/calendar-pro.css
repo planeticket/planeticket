@@ -5,7 +5,7 @@
 	/* border: 1px solid #E6E8EB; */
 	box-sizing: border-box;
 }
-/*******单独组件样式********/
+/*******单独组件样式******/
 .calendar-box *{
 	box-sizing: border-box;
 }
@@ -81,20 +81,24 @@
 	overflow: hidden;
 	width: 660px;
 	margin-left: 20px;
+	padding-bottom: 10px;
 }
 .ht-rili-day{
-	font-family:Arial;
-	font-size: 14px;
-	/* font-weight: bold; */
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 10px;
 	display: inline-block;
 	width: 100%;
+	text-indent: 60px;
 }
 .ht-rili-money{
 	font-family:Arial;
 	display: inline-block;
 	width: 100%;
-	font-size: 10px;
-	color: #D4585A
+	font-size: 14px;
+	color: #D4585A;
+	text-indent: 45px;
+	padding-top: 5px;
 }
 .ht-rili-td-disabled{
 	color: #BFC4CA;

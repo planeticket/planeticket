@@ -218,12 +218,12 @@ pageEncoding="UTF-8"%>
 </script>
 
 <script type="text/javascript">
-	var calendarDate = new Date();
+	var calendarDate = new Date(); //获取当前日期
 	var year = calendarDate.getFullYear();//当前年
-	var month = calendarDate.getMonth() + 1;//当前月
-	var date = calendarDate.getDate();//当前日	
+	var month = calendarDate.getMonth() + 1;//当前月 起始值从0开始要+1
+	var date = calendarDate.getDate();//当前日
 	var mydate = [];
-	var nextdate = new Date()
+	var nextdate = new Date();
 	for (var i = 0; i < 90; i++) {
 		nextdate.setTime(calendarDate.getTime() + 24 * 60 * 60 * i * 1000)
 		mydate.push({
@@ -236,7 +236,7 @@ pageEncoding="UTF-8"%>
 	$('.calendar-box').calendar({
 		ele : '.demo-box', //依附
 		title : '',
-		beginDate : year + "-" + month + "-" + date,
+		//beginDate : year + "-" + month + "-" + date,
 		//endDate : '2018-02-16',
 		data : mydate
 	});
