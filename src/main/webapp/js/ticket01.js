@@ -1,9 +1,16 @@
+//计时器
 var timer1,timer2;
+//图片数量
 var d=1;
-var firstImg=$('.consimg').children().eq(0).clone(true);
-var lastImg=$('.consimg').children().eq($('.consimg').children().length-1).clone(true);
-$('.consimg').append(firstImg);
-lastImg.insertBefore($('.consimg').children().eq(0));
+//克隆第一张图片并返回     $('.consimg')下面的第一个子元素
+//var firstImg=$('.consimg').children().eq(0).clone(true);
+////克隆最后一张图片
+//var lastImg=$('.consimg').children().eq($('.consimg').children().length-1).clone(true);
+////在末尾插入第一张图片
+//$('.consimg').append(firstImg);
+////在第一张图片之前插入最后一张图片
+//lastImg.insertBefore($('.consimg').children().eq(0));
+//滚动条所在位置在第二条图片的位置
 $('.box').scrollLeft($('.consimg').children().eq(0).width());
 
 
@@ -17,7 +24,7 @@ function move(){
 	clearInterval(timer2);
 	timer2=setInterval(function(){
 		minstep++;
-		if (minstep>=maxstep) {
+		if(minstep>=maxstep){
 			clearInterval(timer2);
 			$('.box').scrollLeft(d*$('.consimg').children().eq(0).width());
 			return;
@@ -40,25 +47,25 @@ function autoMove(){
 autoMove();
 
 
-$('#right').click(function (){
-	clearInterval(timer1);
-	d++;
-	if (d>=$('.consimg').children().length) {
-		d=2;
-		$('.box').scrollLeft($('.consimg').children().eq(0).width());
-	};
-	move();
-	autoMove();
-});
-
-$('#left').click(function (){
-	clearInterval(timer1);
-	d--;
-	if (d<0) {
-		d=$('.consimg').children().length-3;
-		$('.box').scrollLeft($('.consimg').children().eq(0).width()*(d+1));
-	};
-	move();
-	autoMove();
-});
+//$('#right').click(function (){
+//	clearInterval(timer1);
+//	d++;
+//	if (d>=$('.consimg').children().length) {
+//		d=2;
+//		$('.box').scrollLeft($('.consimg').children().eq(0).width());
+//	};
+//	move();
+//	autoMove();
+//});
+//
+//$('#left').click(function (){
+//	clearInterval(timer1);
+//	d--;
+//	if (d<0) {
+//		d=$('.consimg').children().length-3;
+//		$('.box').scrollLeft($('.consimg').children().eq(0).width()*(d+1));
+//	};
+//	move();
+//	autoMove();
+//});
 

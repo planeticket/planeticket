@@ -22,10 +22,13 @@ pageEncoding="UTF-8"%>
 	src="js/calendar-pro.js"></script>
 <script language="javascript" type="text/javascript"
 	src="js/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/ticket01.js"></script>
 </head>
 <body>
 	<%
-	    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    request.getAttribute("df1");
+		request.getAttribute("df2");
 	%>
 	<div class="wrap">
 		<div class="header">
@@ -68,9 +71,11 @@ pageEncoding="UTF-8"%>
 		</div>
 		<div class="content">
 			<!-- conup -->
+			<form action="ticket02.jsp" method="post">
 			<div class="upcon">
 				<div class="upconleft">
 					<div class="clickcity">
+						<!-- 表头日历 -->
 						<h3 class="upconleftnormal onlygo">
 							<a href="javascript:;"></a>单程
 						</h3>
@@ -82,11 +87,12 @@ pageEncoding="UTF-8"%>
 						<div id="time1" class="times">
 							<input type="text" id="d1"
 								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})"
-								value="${df }" />
+								value="${df1 }" />
 						</div>
 						<div id="time2" class="times">
 							<input type="text" id="d2"
-								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'11:30'})" />
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'11:30'})" 
+								value="${df2 }"/>
 						</div>
 					</div>
 					<div class="clickcity">
@@ -98,23 +104,26 @@ pageEncoding="UTF-8"%>
 							<option value="">北京</option>
 						</select>
 						<h3 class="upconleftnormal">出发日期</h3>
-						<div id="time3">
+						
+						<div id="time3">				
 							<input type="text" id="d1"
-								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})" />
+								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})" value="${df1 }"/>
 						</div>
 						<div id="time4">
 							<input type="text" id="d2"
-								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'11:30'})" />
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'11:30'})" value="${df2 }"/>
 						</div>
 					</div>
 				</div>
-				<a href="ticket02.html" class="upconright"> 订机票 </a>
+				<input type="submit"  class="upconright" value="订机票">
 			</div>
+			</form>
 			<!-- band -->
 			<div class="band">遛弯特价机票</div>
 
 			<!-- leftcon -->
 			<div class="leftcon">
+				<!-- 城市切换 -->
 				<div class="leftupcon">
 					<select name="" id=""><option value="">北京</option></select> <a
 						href="javascript:;"><option value=""></option></a> <select name=""
