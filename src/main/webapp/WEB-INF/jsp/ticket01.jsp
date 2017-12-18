@@ -67,7 +67,7 @@ pageEncoding="UTF-8"%>
 			</div>
 		</div>
 		<div class="pos">
-			<a href="javascript:;">首页</a> &gt; <a href="javascript:;">预定</a> &gt;
+			<a href="javascript:;">首页</a> &gt; <a href="javascript:;">预订</a> &gt;
 			机票
 		</div>
 		<div class="content">
@@ -76,10 +76,12 @@ pageEncoding="UTF-8"%>
 			<div class="upcon">
 				<div class="upconleft">
 					<div class="clickcity">
-						<!-- 表头日历 -->
-						<h3 class="upconleftnormal onlygo">
-							<a href="javascript:;"></a>单程
-						</h3>
+						<div class="upconleftnormal onlygo">
+							<!-- <a href="javascript:;"></a>单程 -->
+							<label name="goway" class="checked" for="goway">
+							<input type="radio" name="goways" id="goway" value="单程" />
+							单程</label>
+						</div>
 						<h3 class="upconleftnormal">出发城市</h3>
 						<select class="upconleftnormal city" name="" id="">
 							<option value="">北京</option>
@@ -97,9 +99,12 @@ pageEncoding="UTF-8"%>
 						</div>
 					</div>
 					<div class="clickcity">
-						<h3 class="upconleftnormal onlygo">
-							<a href="javascript:;"></a>往返
-						</h3>
+						<div class="upconleftnormal onlygo">
+							<!-- <a href="javascript:;"></a>往返 -->
+							<label name="goways" for="goways">
+							<input type="radio" name="goways" id="goways" value="往返"/>
+							往返</label>
+						</div>
 						<h3 class="upconleftnormal">出发城市</h3>
 						<select class="upconleftnormal city" name="" id="">
 							<option value="">北京</option>
@@ -239,4 +244,17 @@ pageEncoding="UTF-8"%>
 
 <script language="javascript" type="text/javascript"
 	src="js/ticket01.js"></script>
+<script type="text/javascript">
+var radioId=$('#goway').attr('id');
+var prevId=$('#goways').attr('id');
+$('#' + prevId).css("display","block");
+$(function(){
+	$('label').click(function(){
+		 radioId = $(this).attr('name');
+		 $('input[type="radio"]').removeAttr('checked') && $('#' + radioId).attr('checked', 'checked');
+		 $('input[type="radio"]').css('display','block')&& $('#' + radioId).css("display","none"); 
+	});
+	
+})
+</script>
 </html>
