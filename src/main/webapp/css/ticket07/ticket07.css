@@ -57,7 +57,7 @@
 	font-weight: bold;
 	color: white;
 	font-size: 16px;
-	background:  url(../ticketimgs/ticket07/zuihouyigebutton_03.png) 0 0 no-repeat;
+	background:  url(../../img/ticket07/zuihouyigebutton_03.png) 0 0 no-repeat;
 	margin-top: 26px;
 }
 
@@ -98,7 +98,7 @@
 	width: 443px;
 	height: 14px;
 	overflow: hidden;
-	background:  url(../ticketimgs/ticket03/diandiandian_03.png) 0 10px repeat-x;
+	background:  url(../../img/ticket03/diandiandian_03.png) 0 10px repeat-x;
 	margin-top: 20px;
 }
 .priceinfo p{

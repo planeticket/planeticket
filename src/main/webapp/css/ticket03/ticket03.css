@@ -7,7 +7,7 @@
 	width: 1002px;
 	height: 32px;
 	margin: 0 auto;
-	background:  url(../ticketimgs/ticket03/bannerticket01_03.jpg) 0 0 no-repeat;
+	background:  url(../../img/ticket03/bannerticket01_03.jpg) 0 0 no-repeat;
 
 }
 /*************************** 内容框主体结构 **********************************/
@@ -92,7 +92,7 @@
 	height: 12px;
 	line-height: 12px;
 	margin-left: 80px;
-	background:  url(../ticketimgs/ticket03/gantanhao_03.png) 0 0 no-repeat;
+	background:  url(../../img/ticket03/gantanhao_03.png) 0 0 no-repeat;
 }
 /* 新增按钮 */
 .classicbox a{
@@ -100,7 +100,7 @@
 	width: 171px;
 	height: 25px;
 	line-height: 25px;
-	background:  url(../ticketimgs/ticket03/button_03.png) 0 0 no-repeat;
+	background:  url(../../img/ticket03/button_03.png) 0 0 no-repeat;
 	margin-right: 41px;
 	text-align: center;
 	color: white;
@@ -165,7 +165,7 @@
 	top: 12px;
 	width: 12px;
 	height: 15px;
-	background:  url(../ticketimgs/ticket03/dagou_03.png) 0 0 no-repeat;
+	background:  url(../../img/ticket03/dagou_03.png) 0 0 no-repeat;
 }
 /* 配送地址 */
 #address{
@@ -233,7 +233,7 @@
 	float: left;
 }
 .fapiao .bangzhu{
-	background: url(../imgs/imgs03/bangzhu_06.png) 0 0 no-repeat;
+	background: url(../../img/common/bangzhu_06.png) 0 0 no-repeat;
 	width: 17px;
 	height: 17px;
 	float: right;
@@ -260,7 +260,7 @@
 	height: 36px;
 	line-height: 36px;
 	text-align: center;
-	background:  url(../imgs/imgs03/tijiaodingdan_03.png) 0 0 no-repeat;
+	background:  url(../../img/common/tijiaodingdan_03.png) 0 0 no-repeat;
 	font-size: 16px;
 	color: #ffffff;
 	margin-right: 19px;
@@ -374,7 +374,7 @@
 	width: 366px;
 	height: 14px;
 	overflow: hidden;
-	background:  url(../ticketimgs/ticket03/diandiandian_03.png) 0 10px repeat-x;
+	background:  url(../../img/ticket03/diandiandian_03.png) 0 10px repeat-x;
 	margin-top: 18px;
 }
 .priceinfo p{

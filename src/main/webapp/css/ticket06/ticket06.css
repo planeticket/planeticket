@@ -7,7 +7,7 @@
 	width: 1002px;
 	height: 32px;
 	margin: 0 auto;
-	background:  url(../ticketimgs/ticket06/banner06_03.jpg) 0 0 no-repeat;
+	background:  url(../../img/ticket06/banner06_03.jpg) 0 0 no-repeat;
 
 }
 /***************************************** 内容 ************************************/
@@ -76,7 +76,7 @@
 	color: white;
 	text-align: center;
 	float: left;
-	background:  url(../imgs/imgs05/chakanbutton_07.png) 0 0 no-repeat;
+	background:  url(../../img/common/chakanbutton_07.png) 0 0 no-repeat;
 	font-weight: bold;
 }
 #rightbutton{
