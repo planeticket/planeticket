@@ -166,8 +166,23 @@
 	float: right;
 	width: 269px;
 	height: 336px;
-	background:  url(../../img/ticket01/youbiantupian_03.jpg) 0 0 no-repeat;
+	overflow: hidden;
 	position: relative;
+}
+.box{
+	width: 269px;
+	height: 336px;
+	float: left;
+	overflow: hidden;
+}
+.consimg{
+	width: 8000px;
+	overflow: hidden;
+}
+.consimg img{
+	width: 269px;
+	height: 336px;
+	float: left;
 }
 .rightcon h3{
 	position: absolute;
@@ -344,28 +359,7 @@
 
 /****************大图滚动**************/
 
-.rightcon{
-	float: right;
-	width: 269px;
-	height: 336px;
-	overflow: hidden;
-	position: relative;
-}
-.box{
-	width: 269px;
-	height: 336px;
-	float: left;
-	overflow: hidden;
-}
-.consimg{
-	width: 8000px;
-	overflow: hidden;
-}
-.consimg img{
-	width: 269px;
-	height: 336px;
-	float: left;
-}
+
 /* #left{
 	position: absolute;
 	left: 0;

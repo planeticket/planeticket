@@ -2,7 +2,6 @@
 	var calendarDate = {};
 	var riliHtml = '';
 	calendarDate.today = new Date();
-	console.log(calendarDate.today)
 	calendarDate.year = calendarDate.today.getFullYear();//当前年
 	calendarDate.month = calendarDate.today.getMonth()+1;//当前月
 	calendarDate.date = calendarDate.today.getDate();//当前日

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Test {
     @RequestMapping("/saveController")
     public String save(){
-        return "forward:/WEB-INF/jsp/ticket03.jsp";
+        return "forward:/WEB-INF/jsp/ticket01.jsp";
     }
 }
