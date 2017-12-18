@@ -143,7 +143,7 @@ pageEncoding="UTF-8"%>
 						<img src="img/ticket01/youbiantupian_02.jpg" alt="">
 						<img src="img/ticket01/youbiantupian_03.jpg" alt="">
 						<img src="img/ticket01/youbiantupian_04.jpg" alt="">
-						<img src="img/ticket01/youbiantupian_05.jpg" alt="">						
+						<img src="img/ticket01/youbiantupian_05.jpg" alt="">	
 					</div>	
 					<h3></h3><p>一票在手,免费游岛</p>
 				</div>

@@ -162,6 +162,28 @@
 }
 
 /******************************************* 右边的内容 ************************************/
+.rightcon{
+	float: right;
+	width: 270px;
+	height: 336px;
+	overflow: hidden;
+	position: relative;
+}
+.box{
+	width: 269px;
+	height: 336px;
+	float: left;
+	overflow: hidden;
+}
+.consimg{
+	width: 8000px;
+	overflow: hidden;
+}
+.consimg img{
+	width: 269px;
+	height: 336px;
+	float: left;
+}
 .rightcon h3{
 	position: absolute;
 	left: 0;
@@ -332,29 +354,6 @@
 #teshu{
 	color: #cc0000;
 }
-
-
-/****************大图滚动**************/
-
-
-/* #left{
-	position: absolute;
-	left: 0;
-	top: 150px;
-	width: 36px;
-	height: 36px;
-	background: url(../../img/ticket01/jiantoul.png) 0 0 no-repeat;
-	cursor: pointer;
-}
-#right{
-	position: absolute;
-	left: 233px;
-	top: 150px;
-	width: 36px;
-	height: 36px;
-	background: url(../../img/ticket01/jiantour.png) 0 0 no-repeat;
-	cursor: pointer;
-} */
 
 
 
