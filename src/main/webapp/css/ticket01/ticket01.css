@@ -1,4 +1,4 @@
-/****************************************** 主体结构 *************************************/
+ /****************************************** 主体结构 *************************************/
 .content{
 	
 	width: 1000px;
@@ -224,7 +224,7 @@
 
 
 .leftupcon{
-	margin: 8px 0 20px 20px ;
+	margin: 8px 0 -14px 20px ;
 	overflow: hidden;
 }
 .leftupcon select{
@@ -234,12 +234,11 @@
 	margin-right: 10px;
 	float: left;
 }
-.leftupcon a{
-	float: left;
+.leftupcon span{
+	float:left;
 	width: 71px;
-	height: 30px;
+	height: 60px;
 	margin-right: 10px;
-	background:  url(../../img/ticket01/jiaohuan_03.png) 0 0 no-repeat;
 }
 
 /************************************** 年月选择框 *************************/
@@ -314,8 +313,6 @@
 	border: none;
 	float: left;
 	font-weight: bold;
-
-
 }
 .table .week{
 	border: none;

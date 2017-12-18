@@ -2,6 +2,7 @@
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,13 +23,13 @@ pageEncoding="UTF-8"%>
 	src="js/calendar-pro.js"></script>
 <script language="javascript" type="text/javascript"
 	src="js/WdatePicker.js"></script>
-<script language="javascript" type="text/javascript"
-	src="js/ticket01.js"></script>
+
 </head>
 <body>
 	<%
-	    request.getAttribute("df1");
+		request.getAttribute("df1");
 		request.getAttribute("df2");
+		
 	%>
 	<div class="wrap">
 		<div class="header">
@@ -91,7 +92,7 @@ pageEncoding="UTF-8"%>
 						</div>
 						<div id="time2" class="times">
 							<input type="text" id="d2"
-								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'11:30'})" 
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" 
 								value="${df2 }"/>
 						</div>
 					</div>
@@ -111,7 +112,7 @@ pageEncoding="UTF-8"%>
 						</div>
 						<div id="time4">
 							<input type="text" id="d2"
-								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'11:30'})" value="${df2 }"/>
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" value="${df2 }"/>
 						</div>
 					</div>
 				</div>
@@ -125,14 +126,19 @@ pageEncoding="UTF-8"%>
 			<div class="leftcon">
 				<!-- 城市切换 -->
 				<div class="leftupcon">
-					<select name="" id=""><option value="">北京</option></select> <a
-						href="javascript:;"><option value=""></option></a> <select name=""
-						id=""><option value="">台湾</option></select>
+					<select name="" id="select1">
+						<option value="北京">北京</option>
+						<option value="南京">南京</option>
+						<option value="东京">东京</option>
+					</select> 
+					<span id="spans"><img alt="" src="img/ticket01/jiaohuan_03.png"></span>
+					<select name="" id="select2">
+						<option value="台湾">台湾</option>					
+					</select>
 				</div>
 
 				<!-- 容器布局 -->
 				<div class="calendar-box demo-box"></div>
-
 			</div>
 			<!-- rightcon -->
 			<!--大图滚动-->
@@ -192,12 +198,25 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 </body>
+<!-- 切换城市 -->
+<script type="text/javascript">
+
+	var select1=document.getElementById('select1');
+	var select2=document.getElementById('select2');
+	var spans=document.getElementById('spans');
+	var v1=select1.innerHTML;
+	spans.onclick=function(){		
+		select1.innerHTML=select2.innerHTML;
+		select2.innerHTML=v1;
+		v1=select1.innerHTML;
+	}
+</script>
+
 <script type="text/javascript">
 	var calendarDate = new Date();
 	var year = calendarDate.getFullYear();//当前年
 	var month = calendarDate.getMonth() + 1;//当前月
-	var date = calendarDate.getDate();//当前日
-
+	var date = calendarDate.getDate();//当前日	
 	var mydate = [];
 	var nextdate = new Date()
 	for (var i = 0; i < 90; i++) {
