@@ -1,0 +1,105 @@
+.demo-box{
+	width: 700px;
+	overflow: hidden;
+	/* background: #EEF5FD; */
+	/* border: 1px solid #E6E8EB; */
+	box-sizing: border-box;
+}
+/*******单独组件样式********/
+.calendar-box *{
+	box-sizing: border-box;
+}
+.ht-rili-head{
+	overflow: hidden;
+	width: 660px;
+	margin-left: 20px;
+}
+.ht-rili-querybox{
+	overflow: hidden;
+	background: #5ab4f5;
+	height: 30px;
+}
+.ht-rili-datebox{
+	float: left;
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 260px;
+	padding-top: 7px;
+}
+.ht-rili-date{
+	text-align: center;
+	display: inline-block;
+	width: 100px;
+	height: 19px;
+	line-height: 19px;
+	vertical-align: middle;
+	color: #fff;
+}
+.ht-rili-leftarr{
+	display: inline-block;
+	width:25px;
+	height: 19px;
+	background: url("../../img/ticket01/leftarr.png") left center no-repeat;
+	/* background-size: contain; */
+	vertical-align: middle;
+	cursor: pointer;
+}
+.ht-rili-rightarr{
+	display: inline-block;
+	width:25px;
+	height: 19px;
+	background: url("../../img/ticket01/rightarr.png") right center no-repeat;
+	/* background-size: contain; */
+	vertical-align: middle;
+	cursor: pointer;
+}
+.ht-rili-th{
+	width: 14.25%;
+	float: left;
+	text-align: center;
+	height: 25px;
+	line-height: 25px;
+	/*background: #E66B14;*/
+	color: #1f71b8;
+	font-weight: bold;
+	font-size: 10px;
+}
+.ht-rili-td{
+	width: 14.25%;
+	float: left;
+	text-align: center;
+	height:50px;
+	/*line-height: 50px;*/
+	/* background: #EEF5FD; */
+	padding-top: 2px;
+	/* border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd; */
+	border: 1px solid #ddd;
+	cursor: pointer;
+}
+.ht-rili-body{
+	overflow: hidden;
+	width: 660px;
+	margin-left: 20px;
+}
+.ht-rili-day{
+	font-family:Arial;
+	font-size: 14px;
+	/* font-weight: bold; */
+	display: inline-block;
+	width: 100%;
+}
+.ht-rili-money{
+	font-family:Arial;
+	display: inline-block;
+	width: 100%;
+	font-size: 10px;
+	color: #D4585A
+}
+.ht-rili-td-disabled{
+	color: #BFC4CA;
+}
+.ht-rili-td-active{
+	border-radius: 4px;
+	background: #80B3E8;
+}
