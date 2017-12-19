@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
 						</div>
 						<div id="time2" class="times">
 							<input type="text" id="d2"
-								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" 
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'23:30'})" 
 								value="${df2 }"/>
 						</div>
 					</div>
@@ -132,13 +132,13 @@ pageEncoding="UTF-8"%>
 				<!-- 城市切换 -->
 				<div class="leftupcon">
 					<select name="" id="select1">
-						<option value="北京">北京</option>
-						<option value="南京">南京</option>
-						<option value="东京">东京</option>
+						<option >北京</option>
+						<option >南京</option>
+						<option >东京</option>
 					</select> 
 					<span id="spans"><img alt="" src="img/ticket01/jiaohuan_03.png"></span>
 					<select name="" id="select2">
-						<option value="台湾">台湾</option>					
+						<option >台湾</option>					
 					</select>
 				</div>
 
@@ -210,10 +210,23 @@ pageEncoding="UTF-8"%>
 	var select2=document.getElementById('select2');
 	var spans=document.getElementById('spans');
 	var v1=select1.innerHTML;
-	spans.onclick=function(){		
+	var value1;
+	var value2;
+	spans.onclick=function(){
+		console.log(select1.value);
+		console.log(select2.value);
+		value1=select1.value;
+		value2=select2.value;
+		
 		select1.innerHTML=select2.innerHTML;
+		/* select1.value=select2.value; */
 		select2.innerHTML=v1;
+		select2.value=value1;
+		select1.value=value2;
+		
 		v1=select1.innerHTML;
+		
+		alert(select1.value)
 	}
 </script>
 
