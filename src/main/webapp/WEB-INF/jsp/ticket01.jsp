@@ -213,8 +213,6 @@ pageEncoding="UTF-8"%>
 	var value1;
 	var value2;
 	spans.onclick=function(){
-		console.log(select1.value);
-		console.log(select2.value);
 		value1=select1.value;
 		value2=select2.value;
 		
@@ -225,8 +223,6 @@ pageEncoding="UTF-8"%>
 		select1.value=value2;
 		
 		v1=select1.innerHTML;
-		
-		alert(select1.value)
 	}
 </script>
 
