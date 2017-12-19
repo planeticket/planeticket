@@ -8,5 +8,7 @@
 </head>
 <body>
 	<a href="saveController">添加用户</a>
+	<br/>
+	<a href="getCity">获取始发城市</a>
 </body>
 </html>

@@ -84,7 +84,10 @@ pageEncoding="UTF-8"%>
 						</div>
 						<h3 class="upconleftnormal">出发城市</h3>
 						<select class="upconleftnormal city" name="" id="">
-							<option value="">北京</option>
+							<option value="select">请选择</option>
+							<c:forEach items="${cityList }" var="citys">
+								<option>${citys.paCity }</option>
+							</c:forEach>
 						</select>
 						<h3 class="upconleftnormal">出发日期</h3>
 						<div id="time1" class="times">
@@ -100,16 +103,15 @@ pageEncoding="UTF-8"%>
 					</div>
 					<div class="clickcity">
 						<div class="upconleftnormal onlygo">
-							<!-- <a href="javascript:;"></a>往返 -->
 							<label name="goways" for="goways">
 							<input type="radio" name="goways" id="goways" value="往返"/>
 							往返</label>
 						</div>
-						<h3 class="upconleftnormal">出发城市</h3>
+						<h3 class="upconleftnormal">到达城市</h3>
 						<select class="upconleftnormal city" name="" id="">
 							<option value="">北京</option>
 						</select>
-						<h3 class="upconleftnormal">出发日期</h3>
+						<h3 class="upconleftnormal">返程日期</h3>
 						
 						<div id="time3">				
 							<input type="text" id="d1"
@@ -132,9 +134,10 @@ pageEncoding="UTF-8"%>
 				<!-- 城市切换 -->
 				<div class="leftupcon">
 					<select name="" id="select1">
-						<option >北京</option>
-						<option >南京</option>
-						<option >东京</option>
+						<option value="select">请选择</option>
+						<c:forEach items="${cityList }" var="citys">
+							<option>${citys.paCity }</option>
+						</c:forEach>
 					</select> 
 					<span id="spans"><img alt="" src="img/ticket01/jiaohuan_03.png"></span>
 					<select name="" id="select2">
@@ -266,4 +269,5 @@ $(function(){
 	
 })
 </script>
+
 </html>
