@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Scope("prototype")
 public class Test{
     @RequestMapping("/saveController")
-    public String save(HttpServletRequest request){
-        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm");
-        request.setAttribute("df1", df1.format(new Date()));
-        request.setAttribute("df2", df2.format(new Date()));
+    public String save(){
         return "forward:/WEB-INF/jsp/ticket01.jsp";
     }
 }

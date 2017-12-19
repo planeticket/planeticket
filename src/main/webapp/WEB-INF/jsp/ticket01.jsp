@@ -26,11 +26,6 @@ pageEncoding="UTF-8"%>
 
 </head>
 <body>
-	<%
-		request.getAttribute("df1");
-		request.getAttribute("df2");
-		
-	%>
 	<div class="wrap">
 		<div class="header">
 			<div class="con">
@@ -108,8 +103,10 @@ pageEncoding="UTF-8"%>
 							往返</label>
 						</div>
 						<h3 class="upconleftnormal">到达城市</h3>
-						<select class="upconleftnormal city" name="" id="">
-							<option value="">北京</option>
+						<select class="upconleftnormal city" name="cityName" id="">
+							<c:forEach items="${provinces }" var="provinces">
+								<option>${provinces.cityName }</option>
+							</c:forEach>
 						</select>
 						<h3 class="upconleftnormal">返程日期</h3>
 						

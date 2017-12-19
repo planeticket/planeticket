@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="provinceController">切换城市</a>
 	<a href="saveController">添加用户</a>
 	<br/>
 	<a href="getCity">获取始发城市</a>
