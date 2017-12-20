@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +9,12 @@
 <link rel="stylesheet" href="css/ticket02/ticket02.css">
 <link rel="stylesheet" href="css/common/head.css">
 <link rel="stylesheet" href="css/common/reset.css">
+<script language="javascript" type="text/javascript"
+	src="js/jquery-1.8.3.min.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/jquery-2.1.4.min.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/WdatePicker.js"></script>
 </head>
 <body>
 	<div class="wrap">
@@ -46,7 +53,7 @@
 			</div>
 		</div>
 		<div class="pos">
-			<a href="javascript:;">首页</a> &gt; <a href="javascript:;">预定</a> &gt;
+			<a href="javascript:;">首页</a> &gt; <a href="javascript:;">预订</a> &gt;
 			机票
 		</div>
 
@@ -55,28 +62,53 @@
 			<div class="upcon">
 				<div class="upconleft">
 					<div class="clickcity">
-						<h3 class="upconleftnormal onlygo">
-							<a href="javascript:;"></a>单程
-						</h3>
+						<div class="upconleftnormal onlygo">
+							<!-- <a href="javascript:;"></a>单程 -->
+							<label name="goway" class="checked" for="goway">
+							<input type="radio" name="goways" id="goway" value="单程" />
+							单程</label>
+						</div>
 						<h3 class="upconleftnormal">出发城市</h3>
 						<select class="upconleftnormal city" name="" id="">
-							<option value="">北京</option>
+							<option value="select">请选择</option>
+							<c:forEach items="${cityList }" var="citys">
+								<option>${citys.paCity }</option>
+							</c:forEach>
 						</select>
 						<h3 class="upconleftnormal">出发日期</h3>
-						<select class="upconleftnormal upyear" name="" id=""></select> <select
-							class="upconleftnormal uptime" name="" id=""></select>
+						<div id="time1" class="times">
+							<input type="text" id="d1"
+								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})"
+								value="${df1 }" />
+						</div>
+						<div id="time2" class="times">
+							<input type="text" id="d2"
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'23:30'})" 
+								value="${df2 }"/>
+						</div>
 					</div>
 					<div class="clickcity">
-						<h3 class="upconleftnormal onlygo">
-							<a href="javascript:;"></a>往返
-						</h3>
-						<h3 class="upconleftnormal">出发城市</h3>
+						<div class="upconleftnormal onlygo">
+							<label name="goways" for="goways">
+							<input type="radio" name="goways" id="goways" value="往返"/>
+							往返</label>
+						</div>
+						<h3 class="upconleftnormal">到达城市</h3>
 						<select class="upconleftnormal city" name="" id="">
-							<option value="">北京</option>
+							<option value="select">请选择</option>
+							<c:forEach items="${provinces }" var="provinces">
+								<option>${provinces.cityName }</option>
+							</c:forEach>
 						</select>
-						<h3 class="upconleftnormal">出发日期</h3>
-						<select class="upconleftnormal upyear" name="" id=""></select> <select
-							class="upconleftnormal uptime" name="" id=""></select>
+						<h3 class="upconleftnormal">返程日期</h3>
+						<div id="time3">				
+							<input type="text" id="d1"
+								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})" value="${df1 }"/>
+						</div>
+						<div id="time4">
+							<input type="text" id="d2"
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" value="${df2 }"/>
+						</div>
 					</div>
 				</div>
 				<a href="javacsript:;" class="upconright"> 订机票 </a>
@@ -652,5 +684,19 @@
 				Reserved. 京ICP备11</div>
 		</div>
 	</div>
+	
+<script type="text/javascript">
+	var radioId=$('#goway').attr('id');
+	var prevId=$('#goways').attr('id');
+	$('#' + prevId).css("display","block");
+	$(function(){
+		$('label').click(function(){
+			 radioId = $(this).attr('name');
+			 $('input[type="radio"]').removeAttr('checked') && $('#' + radioId).attr('checked', 'checked');
+			 $('input[type="radio"]').css('display','block')&& $('#' + radioId).css("display","none"); 
+		});
+		
+	})
+</script>
 </body>
 </html>

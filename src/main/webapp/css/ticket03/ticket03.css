@@ -280,6 +280,12 @@
 	color: #6e6e6e;
 	margin-bottom: 19px;
 }
+.conrighttit2{
+	font-size: 12px;
+	color: #6e6e6e;
+	margin-bottom: 19px;
+	background:  url(../../img/ticket03/airport.png) 280px 0 no-repeat;
+}
 /* 机票信息 */
 .conrightticketinfo{
 	width: 347px;

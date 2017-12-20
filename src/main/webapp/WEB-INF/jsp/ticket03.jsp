@@ -57,7 +57,7 @@
 			<div class="conright">
 				<p class="conrighttit">航班的起飞和到达时间为当地时间</p>
 				<div class="conrightticketinfo">
-					<p class="conrighttit">去程11月10日 北京→台北</p>
+					<p class="conrighttit2">去程11月10日 北京→台北</p>
 					<h3 class="conrightticketinfoh3">南方航空 CS3009 45 经济舱</h3>
 					<div class="chufadaoda">
 						<div class="chufa">
