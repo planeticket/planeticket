@@ -51,7 +51,6 @@
 			<div class="bannin"></div>
 		</div>
 
-
 		<!-- 以下为内容 -->
 		<div class="content">
 			<!-- 右边内容 -->
