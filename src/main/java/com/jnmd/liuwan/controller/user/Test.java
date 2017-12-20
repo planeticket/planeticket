@@ -41,4 +41,9 @@ public class Test{
         return mv;
     }
     
+    @RequestMapping("/getTicket03")
+    public String getTicket3(){
+        return "ticket03";
+    }
+    
 }

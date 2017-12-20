@@ -156,7 +156,7 @@
 							出生日期<span>*</span>
 						</h4>
 						<div class="classicdiv" id="bornday">
-							<input type="text" name="birthday">
+							<input style="width:280px" type="text" name="birthday">
 						</div>
 					</div>
 					<!-- 证件信息 -->
@@ -168,7 +168,7 @@
 							<input type="text" name="papersid">
 						</div>
 						<div class="classicdiv" id="IDinfo">
-							<input type="text" name="papersname">
+							<input style="width:281px" type="text" name="papersname">
 						</div>
 					</div>
 					<!-- 为了您能够顺利登机 -->
@@ -196,7 +196,7 @@
 							联系方式<span>*</span>
 						</h4>
 						<div class="classicdiv" id="contactcontnumber">
-							<input type="text" name="contact_phone">
+							<input style="width:190px" type="text" name="contact_phone">
 						</div>
 					</div>
 					<!-- 报销信息 -->
@@ -220,14 +220,14 @@
 					<div class="classicbox">
 						<h4 class="classich4">收件人</h4>
 						<div class="classicdiv" id="shoujianren">
-							<input type="text" name="uname">
+							<input style="width:281px" type="text" name="uname">
 						</div>
 					</div>
 					<!-- 手机号码 -->
 					<div class="classicbox">
 						<h4 class="classich4">手机号码</h4>
 						<div class="classicdiv" id="shoujianren">
-							<input type="text" name="mphone">
+							<input style="width:281px" type="text" name="mphone">
 						</div>
 					</div>
 					<!-- 配送地址 -->
@@ -275,7 +275,7 @@
 						《网络电子客票协议》《航意险说明1》《航意险说明2》《保险经纪委托协议》 《延误险说明》
 					</div>
 					<!-- 提交订单 -->
-					<input type="submit" class="tijiaodingdan" id="tijiao">提交订单</input>
+					<input type="submit" class="tijiaodingdan" id="tijiao" value="提交订单"/>
 					<a href="ticket02.html" class="tijiaodingdan">取消订单</a>
 				</form>
 			</div>
@@ -314,7 +314,7 @@
 				</ul>
 				<ul class="list5">
 					<li class="phonenum">400 820 8820</li>
-					<li>周一至周日</a></li>
+					<li>周一至周日</li>
 					<li>9:00~20:00</li>
 					<li class="zixun"></li>
 
