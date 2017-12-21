@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +9,54 @@
 <link rel="stylesheet" href="css/ticket03/ticket03.css">
 <link rel="stylesheet" href="css/common/head.css">
 <link rel="stylesheet" href="css/common/reset.css">
+<script language="javascript" type="text/javascript"
+	src="js/jquery-1.8.3.min.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/jquery-2.1.4.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/ticket03/citylist.js"></script>
+<style type="text/css">
+#xingcheng{
+position:absolute;
+top:13px;
+left:0px;
+width:10px;
+height:10px;
+border:1px solid #000;
+}
+.xingcheng{
+	background:  url(img/ticket03/dagou_03.png)  0px -3px no-repeat;
+}
+#xingcheng1{
+width:0px;
+height:0px;
+}
+.journey #baoxian{
+position:absolute;
+top:13px;
+left:0px;
+width:10px;
+height:10px;
+border:1px solid #000;
+}
+
+.journey #baoxian input{
+width:0px;
+height:0px;
+}
+.journey #accept{
+position:absolute;
+top:13px;
+left:0px;
+width:12px;
+height:12px;
+
+}
+
+.journey #accept input{
+width:0px;
+height:0px;
+}
+</style>
 </head>
 <body>
 	<div class="wrap">
@@ -109,77 +158,197 @@
 			<!-- 左边内容 -->
 			<div class="conleft">
 				<form method="post" action="#">
-					<div class="titbox">
-						<h3 class="tith3">乘机人信息</h3>
-						<p class="titp">（请准确填写乘机人信息，以免在办理登记时发生问题，* 为必填项）</p>
+					<div class="passagers_msg">
+						<ul>
+							<li class="titbox">
+								<h3 class="tith3">乘机人信息</h3>
+								<p class="titp">（请准确填写乘机人信息，以免在办理登记时发生问题，* 为必填项）</p>
+							</li>
+							<!-- 姓名 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									姓名<span>*</span><input type="text" name="uname"></input>
+								</h4>
+								<div class="classicdiv">
+									<input type="text" name="uname">
+								</div>
+							</li>
+							<!-- 类型 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									类型<span>*</span>
+								</h4>
+								<c:set var="type">成人,儿童</c:set>
+								<select name="usetype" class="classicdiv">
+									<option>请选择</option>
+									<c:forEach items="${type }" var="ty">
+										<option value="${ty }"
+											<c:if test="${param.type eq ty }">
+												selected
+											</c:if>
+										>${ty }</option>
+									</c:forEach>
+								</select>
+							</li>
+							<!-- 性别 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									性别<span>*</span>
+								</h4>
+								<c:set var="sex">男,女</c:set>
+								<select name="sex" class="classicdiv">
+									<option>请选择</option>
+									<c:forEach items="${sex }" var="s">
+										<option value="${s }"
+											<c:if test="${param.sex eq s }">
+												selected
+											</c:if>
+										>${s }</option>
+									</c:forEach>
+								</select>
+							</li>
+							<!-- 国籍 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									国籍<span>*</span>
+								</h4>
+								<div class="classicdiv">
+									<input type="text" name="country">
+								</div>
+							</li>
+							<!-- 出生日期 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									出生日期<span>*</span>
+								</h4>
+								<div class="classicdiv" id="bornday">
+									<input style="width:280px" type="text" name="birthday">
+								</div>
+							</li>
+							<!-- 证件信息 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									证件信息<span>*</span>
+								</h4>
+								<c:set var="papers">身份证,护照,台胞证,回乡证,军人证,港澳通行证,户口簿</c:set>
+								<select name="papersid" class="classicdiv">
+									<option>请选择</option>
+									<c:forEach items="${papers }" var="p">
+										<option value="${p }"
+											<c:if test="${param.papers eq p }">
+												selected
+											</c:if>
+										>${p }</option>
+									</c:forEach>
+								</select>
+								<div class="classicdiv" id="IDinfo">
+									<input style="width:281px" type="text" name="papersname">
+								</div>
+							</li>
+							<!-- 为了您能够顺利登机 -->
+							<li class="classicbox">
+								<p class="reminder">为了您能顺利出行，请确保旅行结束日期至少比证件有效期早1个月。</p>
+							</li>
+							<!-- 新增确认按钮 -->
+							<li class="classicbox" id="xinzengyiweibutton">
+								<a href="javascript:;" id="leftbutton">新增一位登机人</a> <a
+									href="javascript:;">确认并保存身份信息</a>
+							</li>
+						</ul>
+						
+						<ul id="listadd">
+							<li class="titbox">
+								<h3 class="tith3">乘机人信息</h3>
+								<p class="titp">（请准确填写乘机人信息，以免在办理登记时发生问题，* 为必填项）</p>
+							</li>
+							<!-- 姓名 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									姓名<span>*</span><input type="text" name="uname"></input>
+								</h4>
+								<div class="classicdiv">
+									<input type="text" name="uname">
+								</div>
+							</li>
+							<!-- 类型 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									类型<span>*</span>
+								</h4>
+								<c:set var="type">成人,儿童</c:set>
+								<select name="usetype" class="classicdiv">
+									<option>请选择</option>
+									<c:forEach items="${type }" var="ty">
+										<option value="${ty }"
+											<c:if test="${param.type eq ty }">
+												selected
+											</c:if>
+										>${ty }</option>
+									</c:forEach>
+								</select>
+							</li>
+							<!-- 性别 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									性别<span>*</span>
+								</h4>
+								<c:set var="sex">男,女</c:set>
+								<select name="sex" class="classicdiv">
+									<option>请选择</option>
+									<c:forEach items="${sex }" var="s">
+										<option value="${s }"
+											<c:if test="${param.sex eq s }">
+												selected
+											</c:if>
+										>${s }</option>
+									</c:forEach>
+								</select>
+							</li>
+							<!-- 国籍 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									国籍<span>*</span>
+								</h4>
+								<div class="classicdiv">
+									<input type="text" name="country">
+								</div>
+							</li>
+							<!-- 出生日期 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									出生日期<span>*</span>
+								</h4>
+								<div class="classicdiv" id="bornday">
+									<input style="width:280px" type="text" name="birthday">
+								</div>
+							</li>
+							<!-- 证件信息 -->
+							<li class="classicbox">
+								<h4 class="classich4">
+									证件信息<span>*</span>
+								</h4>
+								<c:set var="papers">身份证,护照,台胞证,回乡证,军人证,港澳通行证,户口簿</c:set>
+								<select name="papersid" class="classicdiv">
+									<option>请选择</option>
+									<c:forEach items="${papers }" var="p">
+										<option value="${p }"
+											<c:if test="${param.papers eq p }">
+												selected
+											</c:if>
+										>${p }</option>
+									</c:forEach>
+								</select>
+								<div class="classicdiv" id="IDinfo">
+									<input style="width:281px" type="text" name="papersname">
+								</div>
+							</li>
+							<li class="classicbox" id="xinzengyiweibutton">
+								<a href="javascript:;" id="leftbutton">确认并保存身份信息</a>
+								<a href="javascript:;" id="returnbutton">返回</a>
+							</li>
+						</ul>
 					</div>
-					<!-- 姓名 -->
-					<div class="classicbox">
-						<h4 class="classich4">
-							姓名<span>*</span><input type="text" name="uname"></input>
-						</h4>
-						<div class="classicdiv">
-							<input type="text" name="uname">
-						</div>
 
-					</div>
-					<!-- 类型 -->
-					<div class="classicbox">
-						<h4 class="classich4">
-							类型<span>*</span>
-						</h4>
-						<div class="classicdiv">
-							<input type="text" name="usetype">
-						</div>
-					</div>
-					<!-- 性别 -->
-					<div class="classicbox">
-						<h4 class="classich4">
-							性别<span>*</span>
-						</h4>
-						<div class="classicdiv">
-							<input type="text" name="sex">
-						</div>
-					</div>
-					<!-- 国籍 -->
-					<div class="classicbox">
-						<h4 class="classich4">
-							国籍<span>*</span>
-						</h4>
-						<div class="classicdiv">
-							<input type="text" name="country">
-						</div>
-					</div>
-					<!-- 出生日期 -->
-					<div class="classicbox">
-						<h4 class="classich4">
-							出生日期<span>*</span>
-						</h4>
-						<div class="classicdiv" id="bornday">
-							<input style="width:280px" type="text" name="birthday">
-						</div>
-					</div>
-					<!-- 证件信息 -->
-					<div class="classicbox">
-						<h4 class="classich4">
-							证件信息<span>*</span>
-						</h4>
-						<div class="classicdiv">
-							<input type="text" name="papersid">
-						</div>
-						<div class="classicdiv" id="IDinfo">
-							<input style="width:281px" type="text" name="papersname">
-						</div>
-					</div>
-					<!-- 为了您能够顺利登机 -->
-					<div class="classicbox">
-						<p class="reminder">为了您能顺利出行，请确保旅行结束日期至少比证件有效期早1个月。</p>
-					</div>
-					<!-- 新增确认按钮 -->
-					<div class="classicbox" id="xinzengyiweibutton">
-						<a href="javascript:;" class="leftbutton">新增一位登机人</a> <a
-							href="javascript:;">确认并保存身份信息</a>
-					</div>
 					<!-- 联系人信息 -->
 					<div class="contacttit">
 						<h3 class="contacttith3">联系人信息</h3>
@@ -204,11 +373,15 @@
 						<h3 class="contacttith3">报销信息</h3>
 					</div>
 					<!-- 行程单 -->
-					<div class="journey">
-						<a href="javascript:;"></a>行程单(仅作为报销凭证，起飞后超过7天不可打印行程单)
+					<div class="journey  journey1" >
+						<label for="xingcheng1" id="xingcheng" class="" >	
+							<input type="checkbox" id="xingcheng1">
+						</label>	
+						<span>行程单(仅作为报销凭证，起飞后超过7天不可打印行程单)</span>
+							
 					</div>
 					<!-- 快递 -->
-					<div class="classicbox">
+					<div class="classicbox classicbox1">
 						<h4 class="classich4">快递</h4>
 						<div class="classicdiv" id="kuaidi">
 							<var>￥10</var>
@@ -217,46 +390,55 @@
 					</div>
 
 					<!-- 收件人 -->
-					<div class="classicbox">
+					<div class="classicbox classicbox1">
 						<h4 class="classich4">收件人</h4>
 						<div class="classicdiv" id="shoujianren">
-							<input style="width:281px" type="text" name="uname">
+							<input style="width:281px" type="text" name="uname" disabled="disabled">
 						</div>
 					</div>
 					<!-- 手机号码 -->
-					<div class="classicbox">
+					<div class="classicbox classicbox1">
 						<h4 class="classich4">手机号码</h4>
 						<div class="classicdiv" id="shoujianren">
-							<input style="width:281px" type="text" name="mphone">
+							<input style="width:281px" type="text" name="mphone" disabled="disabled">
 						</div>
 					</div>
-					<!-- 配送地址 -->
-					<div class="classicbox">
+						<!-- 配送地址 -->
+					<div class="classicbox classicbox1">
 						<h4 class="classich4">配送地址</h4>
-						<div class="classicdiv" id="address">
-							<input type="text" name="address_1">
-						</div>
-						<div class="classicdiv" id="address">
-							<input type="text" name="address_2">
-						</div>
-						<div class="classicdiv">
-							<input type="text" name="address_3">
+						<select id="sheng" class="classicdiv address" disabled="disabled">
+							<option value="-1">省份</option>
+						</select>
+						
+						<select id="shi" class="classicdiv address" disabled="disabled">
+							<option value="-1">城市</option>
+						</select>
+
+						<select id="qu" class="classicdiv address" disabled="disabled">
+							<option value="-1">区/县</option>
+						</select>
+						<div class="classicdiv" id="deladdress" disabled="disabled">
+							<input  style="width: 281px" type="text" name="deladdress" pattern="" placeholder="详细地址"  disabled="disabled">
 						</div>
 					</div>
 					<!-- 邮政编码 -->
-					<div class="classicbox">
+					<div class="classicbox classicbox1">
 						<h4 class="classich4">邮政编码</h4>
 						<div class="classicdiv">
-							<input type="text" name="postcode">
+							<input type="text" name="postcode" disabled="disabled">
 						</div>
 					</div>
 					<!-- 保险发票 -->
-					<div class="journey">
-						<a href="javascript:;"></a>保险发票(仅作为通过购买保险的报销凭证)
+					<div class="journey  journey2">
+						<label for="baoxian1" id="baoxian" class="" >
+							<input type="checkbox"  id="baoxian1" >
+						</label>
+						<span>保险发票(仅作为通过购买保险的报销凭证)</span>
+						
 					</div>
 					<div class="fapiao">
 						<h3 id="fapiaocon">发票类型</h3>
-						<select class="invoice_type">
+						<select class="invoice_type" disabled="disabled">
 							<option>增值税专用发票</option>
 							<option>普通发票</option>
 							<option>机动车专用发票</option>
@@ -265,14 +447,17 @@
 					</div>
 					<div class="fapiao">
 						<h3 id="fapiaocon">发票抬头</h3>
-						<input type="text" name="invoice"></input>
+						<input type="text" name="invoice" disabled="disabled"></input>
 					</div>
 
 
 					<!-- 我已同意 -->
-					<div class="journey" id="woyitongyi">
-						<a href="javascript:;"></a> 我已阅读并同意
-						《网络电子客票协议》《航意险说明1》《航意险说明2》《保险经纪委托协议》 《延误险说明》
+					<div class="journey journey3" id="woyitongyi">
+						<label for="accept1" id="accept" class="xingcheng ">
+							<input  type="checkbox"  id="accept1" checked="checked">
+						</label>
+						<span>我已阅读并同意
+						《网络电子客票协议》《航意险说明1》《航意险说明2》《保险经纪委托协议》 《延误险说明》</span>
 					</div>
 					<!-- 提交订单 -->
 					<input type="submit" class="tijiaodingdan" id="tijiao" value="提交订单"/>
@@ -321,8 +506,133 @@
 				</ul>
 			</div>
 			<div class="con2">Copyright © 2013-2014 www.6waner.cn All Right
-				Reserved. 京ICP备11</div>
+				Reserved. 京ICP备11
+			</div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	var sheng=document.getElementById('sheng');
+	var shi=document.getElementById('shi');
+	var qu=document.getElementById('qu');
+	// console.log(json.citylist[0].p);//北京  获取示例
+	// console.log(json.citylist[0].c[0].n)//东城区  获取示例
+	// console.log(json.citylist.length);//35  获取示例
+	var opt1='<option value="-1">请选择省份</option>';
+	for (var i = 0; i <json.citylist.length; i++) {//省份初始值
+		opt1=opt1+'<option value="'+i+'">'+json.citylist[i].p+'</option>';
+		sheng.innerHTML=opt1;
+	}
+	sheng.onchange=function (){//选择省份后
+		var opt2='<option value="-1">请选择城市</option>';//初始值
+		qu.innerHTML=opt2;
+		if(sheng.value==-1){
+			shi.innerHTML=opt2;
+		}else{
+			if (json.citylist[sheng.value].c[0].a) {//是省份执行这
+				for (var i = 0; i <json.citylist[sheng.value].c.length; i++) {
+					opt2=opt2+'<option value="'+i+'">'+json.citylist[sheng.value].c[i].n+'</option>';
+					shi.innerHTML=opt2;
+				}
+			} else{//是直辖市执行这
+				opt2=opt2+'<option value="0">'+json.citylist[sheng.value].p+'</option>';
+				shi.innerHTML=opt2;
+			};
+		}
+	}
+	shi.onchange=function (){//选择城市后
+		var opt3='<option value="-1">请选择区/县</option>';//初始值
+		if(shi.value==-1){
+			qu.innerHTML=opt3;
+		}else{
+			if (json.citylist[sheng.value].c[0].a) {//是省份执行这
+				for (var i = 0; i <json.citylist[sheng.value].c[shi.value].a.length; i++) {
+					opt3=opt3+'<option value="'+i+'">'+json.citylist[sheng.value].c[shi.value].a[i].s+'</option>';
+					qu.innerHTML=opt3;
+				}
+			} else{//是直辖市执行这
+				for (var i = 0; i <json.citylist[sheng.value].c.length; i++) {
+					opt3=opt3+'<option value="'+i+'">'+json.citylist[sheng.value].c[i].n+'</option>';
+					qu.innerHTML=opt3;
+				}
+			};
+		}
+	}
+</script>
+<script type="text/javascript">
+$('#xingcheng').click(function(){
+	
+	 if($('.journey1 input').is(':checked')) {
+		$('#xingcheng').attr("class", "xingcheng");
+		this.style.border="none";
+		this.style.width="12px";
+		this.style.height="12px";
+		$(".classicbox1 input").removeAttr("disabled");
+		$(".classicbox1 select").removeAttr("disabled");
+ 	}else{
+ 		$('#xingcheng').attr("class", "");
+ 		this.style.borderStyle="solid";
+ 		this.style.borderColor="#3c3c3c";
+ 		this.style.borderWidth="1px";
+ 		this.style.width="10px";
+		this.style.height="10px";
+		$(".classicbox1 input").attr("disabled","disabled");
+		$(".classicbox1 select").attr("disabled","disabled");
+ 		console.log("error");
+ 	} 
+	
+})
+$('#baoxian').click(function(){
+	
+	 if($('.journey2 input').is(':checked')) {
+		$('#baoxian').attr("class", "xingcheng");
+		this.style.border="none";
+		this.style.width="12px";
+		this.style.height="12px";
+		$('.fapiao select').removeAttr("disabled");
+		$('.fapiao input').removeAttr("disabled");
+ 	}else{
+ 		$('#baoxian').attr("class", "");
+ 		this.style.borderStyle="solid";
+ 		this.style.borderColor="#3c3c3c";
+ 		this.style.borderWidth="1px";
+ 		this.style.width="10px";
+		this.style.height="10px";
+		$('.fapiao select').attr("disabled","disabled");
+		$('.fapiao input').attr("disabled","disabled");
+ 		console.log("error");
+ 	} 
+	
+})
+$('#accept').click(function(){
+	
+	 if($('.journey3 input').is(':checked')) {
+		$('#accept').attr("class", "xingcheng");
+		this.style.border="none";
+		this.style.width="12px";
+		this.style.height="12px";
+		console.log("222");
+ 	}else{
+ 		$('#accept').attr("class", "");
+ 		this.style.borderStyle="solid";
+ 		this.style.borderColor="#3c3c3c";
+ 		this.style.borderWidth="1px";
+ 		this.style.width="10px";
+		this.style.height="10px";
+ 		console.log("error");
+ 	} 
+	
+})
+</script>
+<script>
+	var listadd=document.getElementById("listadd");
+	$('#leftbutton').click(function(){
+		var addpassager = $('#listadd').clone(true);
+		$('.passagers_msg').append(addpassager);
+			listadd.style.display='block';	
+	})
+	$('#returnbutton').click(function(){
+		this.parentNode.parentNode.style.display='none';
+	})
+</script>
 </html>
