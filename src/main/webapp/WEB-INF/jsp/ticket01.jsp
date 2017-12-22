@@ -67,7 +67,7 @@ pageEncoding="UTF-8"%>
 		</div>
 		<div class="content">
 			<!-- conup -->
-			<form action="ticket02.jsp" method="post">
+			<form action="getMsg" method="post">
 			<div class="upcon">
 				<div class="upconleft">
 					<div class="clickcity">
@@ -78,7 +78,7 @@ pageEncoding="UTF-8"%>
 							单程</label>
 						</div>
 						<h3 class="upconleftnormal">出发城市</h3>
-						<select class="upconleftnormal city" name="" id="">
+						<select class="upconleftnormal city" name="pacity" id="">
 							<option value="select">请选择</option>
 							<c:forEach items="${cityList }" var="citys">
 								<option>${citys.paCity }</option>
@@ -88,12 +88,12 @@ pageEncoding="UTF-8"%>
 						<div id="time1" class="times">
 							<input type="text" id="d1"
 								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})"
-								value="${df1 }" />
+								value="${df1 }" name="startDay"/>
 						</div>
 						<div id="time2" class="times">
 							<input type="text" id="d2"
 								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'23:30'})" 
-								value="${df2 }"/>
+								value="${df2 }" name="startTime"/>
 						</div>
 					</div>
 					<div class="clickcity">
@@ -103,7 +103,7 @@ pageEncoding="UTF-8"%>
 							往返</label>
 						</div>
 						<h3 class="upconleftnormal">到达城市</h3>
-						<select class="upconleftnormal city" name="cityName" id="">
+						<select class="upconleftnormal city" name="cityname" id="">
 							<option value="select">请选择</option>
 							<c:forEach items="${provinces }" var="provinces">
 								<option>${provinces.cityName }</option>
@@ -113,11 +113,11 @@ pageEncoding="UTF-8"%>
 						
 						<div id="time3">				
 							<input type="text" id="d1"
-								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})" value="${df1 }"/>
+								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})" value="${df1 }" name="endDay"/>
 						</div>
 						<div id="time4">
 							<input type="text" id="d2"
-								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" value="${df2 }"/>
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" value="${df2 }" name="endTime"/>
 						</div>
 					</div>
 				</div>

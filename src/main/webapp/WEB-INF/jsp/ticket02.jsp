@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="java.text.DateFormat" import="java.text.SimpleDateFormat" import="com.jnmd.liuwan.domain.PlaneMsg"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -120,28 +121,32 @@
 
 		</div>
 
-		<div class="travel">去程：北京→台北 11月10日（191个航班，68个直飞）</div>
+		<div class="travel">去程：北京→台北 11月10日（${planeMsgs.size()}个班次）</div>
 
 
 		<div class="maincontent">
 			<!-- 左主信息 -->
 			<div class="content">
+			<c:forEach items="${planeMsgs}" var="pmsg">
 				<div class="hangbanxinxi">
 					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
+						<h3>${pmsg.planeCompany.pcName }</h3>
+						<p>${pmsg.pmFight }</p>
 					</div>
+				
 					<!-- 出发时间 -->
 					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
+						<h3><fmt:formatDate value="${pmsg.startTime}" pattern="yyyy-MM-dd"/></h3>
+						<h3><fmt:formatDate value="${pmsg.startTime}" pattern="HH:mm:ss"/></h3>
+						<p>${pmsg.planeAirport.paName}</p>
 						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
 
 					</div>
 					<!-- 到达时间 -->
 					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
+						<h3><fmt:formatDate value="${pmsg.endTime}" pattern="yyyy-MM-dd"/></h3>
+						<h3><fmt:formatDate value="${pmsg.endTime}" pattern="HH:mm:ss"/></h3>
+						<p>${pmsg.province.cityName}</p>
 					</div>
 					<!-- 直飞 -->
 					<div id="zhifei" class="comment">
@@ -151,7 +156,7 @@
 					<!-- 七小时 -->
 					<div id="qixiaoshi" class="comment">
 						<h3></h3>
-						<p>约7小时</p>
+						<p>历时:${pmsg.duringtime }</p>
 					</div>
 					<!-- 退改签 -->
 					<div class="comment ">
@@ -159,454 +164,15 @@
 					</div>
 
 					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
+						<h3 id="ranyou">${pmsg.pmPrice }</h3>
+						<p>机建+燃油 :${pmsg.planeOil.poCreate }+${pmsg.planeOil.poOil }</p>
 					</div>
 
 					<!-- 选定按钮 -->
 					<a class="button" href="ticket03.html">选定</a>
 
 				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
-				<div class="hangbanxinxi">
-					<div class="comment">
-						<h3>南方航空</h3>
-						<p>CS3009 45</p>
-					</div>
-					<!-- 出发时间 -->
-					<div class="comment">
-						<h3>16:10</h3>
-						<p>首都机场T3</p>
-						<img id="jiantou" src="img/ticket02/jiantou_03.png" alt="">
-					</div>
-					<!-- 到达时间 -->
-					<div class="comment">
-						<h3>22:25</h3>
-						<p>桃园机场</p>
-					</div>
-					<!-- 直飞 -->
-					<div id="zhifei" class="comment">
-						<h3></h3>
-						<p>直飞</p>
-					</div>
-					<!-- 七小时 -->
-					<div id="qixiaoshi" class="comment">
-						<h3></h3>
-						<p>约7小时</p>
-					</div>
-					<!-- 退改签 -->
-					<div class="comment ">
-						<h3 id="tuigaiqian">退改签</h3>
-					</div>
-
-					<div class="comment">
-						<h3 id="ranyou">￥1680起</h3>
-						<p>机建+燃油：￥678</p>
-					</div>
-
-					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
-
-				</div>
+				</c:forEach>
 
 
 				<!-- 页码	 -->
@@ -680,6 +246,7 @@
 
 				</ul>
 			</div>
+			
 			<div class="con2">Copyright © 2013-2014 www.6waner.cn All Right
 				Reserved. 京ICP备11</div>
 		</div>
