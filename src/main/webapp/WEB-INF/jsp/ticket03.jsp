@@ -29,6 +29,7 @@ border:1px solid #000;
 #xingcheng1{
 width:0px;
 height:0px;
+display:none;
 }
 .journey #baoxian{
 position:absolute;
@@ -42,6 +43,7 @@ border:1px solid #000;
 .journey #baoxian input{
 width:0px;
 height:0px;
+display:none; 
 }
 .journey #accept{
 position:absolute;
@@ -55,6 +57,7 @@ height:12px;
 .journey #accept input{
 width:0px;
 height:0px;
+display:none;
 }
 </style>
 </head>
@@ -375,7 +378,7 @@ height:0px;
 					<!-- 行程单 -->
 					<div class="journey  journey1" >
 						<label for="xingcheng1" id="xingcheng" class="" >	
-							<input type="checkbox" id="xingcheng1">
+							<input type="checkbox" id="xingcheng1" >
 						</label>	
 						<span>行程单(仅作为报销凭证，起飞后超过7天不可打印行程单)</span>
 							

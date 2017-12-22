@@ -163,8 +163,8 @@
 
 .journey input{
 	position: absolute;
-	left: 0;
-	top: 12px;
+	left: -1px;
+	top: -1px;
 	width: 12px;
 	height: 15px;
 
