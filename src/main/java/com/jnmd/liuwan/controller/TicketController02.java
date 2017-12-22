@@ -1,4 +1,4 @@
-package com.jnmd.liuwan.controller.user;
+package com.jnmd.liuwan.controller;
 
 import java.sql.Time;
 import java.text.DateFormat;

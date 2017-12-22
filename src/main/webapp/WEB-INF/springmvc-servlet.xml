@@ -21,6 +21,7 @@
 	<mvc:resources location="/img/" mapping="/img/**" />
 	<mvc:resources location="/js/" mapping="/js/**" />
 	<mvc:resources location="/jquery/" mapping="/jquery/**" />
+	<mvc:resources location="/assets/" mapping="/assets/**" />
 
 	<!-- 自定义视图解析器 prefix: 指定视图前缀(视图所在路径) suffix: 指定视图后缀(扩展名) -->
 	<bean

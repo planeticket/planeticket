@@ -1,11 +1,10 @@
-package com.jnmd.liuwan.controller.user;
+package com.jnmd.liuwan.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,17 +15,14 @@ import com.jnmd.liuwan.domain.PlaneAirport;
 import com.jnmd.liuwan.domain.Province;
 import com.jnmd.liuwan.service.PlaneAirportService;
 import com.jnmd.liuwan.service.ProvinceService;
-
 @Controller
 @Scope("prototype")
-public class Test{
-    
+public class TicketController01 {
     @Resource
     private PlaneAirportService planeAirportService;
     @Resource
     private ProvinceService provinceService;
-    
-    @RequestMapping("/saveController")
+    @RequestMapping("/getMessage")
     public ModelAndView getMessage(){
         List<PlaneAirport> cityList = planeAirportService.getCity();
         List<Province> provinces=provinceService.getProvinces();
@@ -34,16 +30,12 @@ public class Test{
         SimpleDateFormat df2 = new SimpleDateFormat("HH:mm");
         ModelAndView mv = new ModelAndView();
         mv.addObject("cityList", cityList);
+        System.out.println(provinces);
         mv.addObject("provinces", provinces);
         mv.addObject("df1", df1.format(new Date()));
         mv.addObject("df2", df2.format(new Date()));
-        mv.setViewName("ticket02");
+        mv.setViewName("ticket01");
         return mv;
     }
-    
-    @RequestMapping("/getTicket03")
-    public String getTicket3(){
-        return "ticket03";
-    }
-    
+  
 }
