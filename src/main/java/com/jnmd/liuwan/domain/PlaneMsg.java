@@ -9,26 +9,29 @@ public class PlaneMsg { //航班信息
     private Province province;  //目的地城市
     private Date startTime;     //始发时间
     private Date endTime;       //到达时间
+    private String duringtime;    //经历时间
     private double pmPrice;     //价格
     private PlaneCompany planeCompany;  //航空公司
     private PlaneOil planeOil;  //机建燃油信息
+    
     public PlaneMsg() {
-        super();
     }
     public PlaneMsg(String pmFight, PlaneAirport planeAirport, Province province, Date startTime,
-            Date endTime, double pmPrice, PlaneCompany planeCompany, PlaneOil planeOil) {
+            Date endTime, String duringtime, double pmPrice, PlaneCompany planeCompany, PlaneOil planeOil) {
         super();
         this.pmFight = pmFight;
         this.planeAirport = planeAirport;
         this.province = province;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.duringtime = duringtime;
         this.pmPrice = pmPrice;
         this.planeCompany = planeCompany;
         this.planeOil = planeOil;
     }
+
     public PlaneMsg(int pmId, String pmFight, PlaneAirport planeAirport, Province province, Date startTime,
-            Date endTime, double pmPrice, PlaneCompany planeCompany, PlaneOil planeOil) {
+            Date endTime, String duringtime, double pmPrice, PlaneCompany planeCompany, PlaneOil planeOil) {
         super();
         this.pmId = pmId;
         this.pmFight = pmFight;
@@ -36,9 +39,16 @@ public class PlaneMsg { //航班信息
         this.province = province;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.duringtime = duringtime;
         this.pmPrice = pmPrice;
         this.planeCompany = planeCompany;
         this.planeOil = planeOil;
+    }
+    public String getDuringtime() {
+        return duringtime;
+    }
+    public void setDuringtime(String duringtime) {
+        this.duringtime = duringtime;
     }
     public int getPmId() {
         return pmId;
@@ -98,6 +108,7 @@ public class PlaneMsg { //航班信息
     public String toString() {
         return "PlaneMsg [pmId=" + pmId + ", pmFight=" + pmFight + ", planeAirport=" + planeAirport
                 + ", province=" + province + ", startTime=" + startTime + ", endTime=" + endTime
-                + ", pmPrice=" + pmPrice + ", planeCompany=" + planeCompany + ", planeOil=" + planeOil + "]";
+                + ", duringtime=" + duringtime + ", pmPrice=" + pmPrice + ", planeCompany=" + planeCompany
+                + ", planeOil=" + planeOil + "]";
     }
 }
