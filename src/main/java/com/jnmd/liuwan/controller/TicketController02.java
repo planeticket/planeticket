@@ -52,7 +52,9 @@ public class TicketController02 {
         System.out.println(planeMsgsbefore);
         ModelAndView mv = new ModelAndView();
         mv.addObject("planeMsgs", planeMsgafter);
-        
+        mv.addObject("pacity",pacity);
+        mv.addObject("cityname",cityname);
+        mv.addObject("startDay",startDay);
         mv.setViewName("ticket02");
         return mv;
     }
