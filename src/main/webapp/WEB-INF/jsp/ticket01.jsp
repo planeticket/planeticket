@@ -79,7 +79,7 @@ pageEncoding="UTF-8"%>
 						</div>
 						<h3 class="upconleftnormal">出发城市</h3>
 						<select class="upconleftnormal city" name="pacity" id="">
-							<option value="select">请选择</option>
+							<option value="请选择">请选择</option>
 							<c:forEach items="${cityList }" var="citys">
 								<option>${citys.paCity }</option>
 							</c:forEach>
@@ -104,7 +104,7 @@ pageEncoding="UTF-8"%>
 						</div>
 						<h3 class="upconleftnormal">到达城市</h3>
 						<select class="upconleftnormal city" name="cityname" id="">
-							<option value="select">请选择</option>
+							<option value="请选择">请选择</option>
 							<c:forEach items="${provinces }" var="provinces">
 								<option>${provinces.cityName }</option>
 							</c:forEach>

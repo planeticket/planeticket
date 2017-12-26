@@ -71,21 +71,18 @@
 						</div>
 						<h3 class="upconleftnormal">出发城市</h3>
 						<select class="upconleftnormal city" name="" id="">
-							<option value="select">请选择</option>
-							<c:forEach items="${cityList }" var="citys">
-								<option>${citys.paCity }</option>
-							</c:forEach>
+							<option value="select">${pacity }</option>
 						</select>
 						<h3 class="upconleftnormal">出发日期</h3>
 						<div id="time1" class="times">
 							<input type="text" id="d1"
 								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})"
-								value="${df1 }" />
+								value="${startDay }" />
 						</div>
 						<div id="time2" class="times">
 							<input type="text" id="d2"
 								onclick="WdatePicker({dateFmt:'H:mm',minDate:'8:00',maxDate:'23:30'})" 
-								value="${df2 }"/>
+								value="${startTime }"/>
 						</div>
 					</div>
 					<div class="clickcity">
@@ -96,19 +93,16 @@
 						</div>
 						<h3 class="upconleftnormal">到达城市</h3>
 						<select class="upconleftnormal city" name="" id="">
-							<option value="select">请选择</option>
-							<c:forEach items="${provinces }" var="provinces">
-								<option>${provinces.cityName }</option>
-							</c:forEach>
+							<option value="select">${cityname }</option>
 						</select>
 						<h3 class="upconleftnormal">返程日期</h3>
 						<div id="time3">				
 							<input type="text" id="d1"
-								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})" value="${df1 }"/>
+								onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-{%M+3}-%d'})" value="${endDay }"/>
 						</div>
 						<div id="time4">
 							<input type="text" id="d2"
-								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" value="${df2 }"/>
+								onclick="WdatePicker({dateFmt:'H:mm',minDate:'%H:%m',maxDate:'23:30'})" value="${endTime }"/>
 						</div>
 					</div>
 				</div>
@@ -167,10 +161,8 @@
 						<h3 id="ranyou">${pmsg.pmPrice }</h3>
 						<p>机建+燃油 :${pmsg.planeOil.poCreate }+${pmsg.planeOil.poOil }</p>
 					</div>
-
 					<!-- 选定按钮 -->
 					<a class="button" href="ticket03.html">选定</a>
-
 				</div>
 				</c:forEach>
 

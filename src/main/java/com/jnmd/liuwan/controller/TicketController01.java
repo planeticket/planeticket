@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jnmd.liuwan.domain.PlaneAirport;
 import com.jnmd.liuwan.domain.Province;
+import com.jnmd.liuwan.domain.Users;
 import com.jnmd.liuwan.service.PlaneAirportService;
 import com.jnmd.liuwan.service.ProvinceService;
 @Controller
@@ -23,7 +26,7 @@ public class TicketController01 {
     @Resource
     private ProvinceService provinceService;
     @RequestMapping("/getMessage")
-    public ModelAndView getMessage(){
+    public ModelAndView getMessage(HttpServletRequest request){
         List<PlaneAirport> cityList = planeAirportService.getCity();
         List<Province> provinces=provinceService.getProvinces();
         SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -31,6 +34,9 @@ public class TicketController01 {
         ModelAndView mv = new ModelAndView();
         mv.addObject("cityList", cityList);
         System.out.println(provinces);
+        HttpSession session=request.getSession();
+        Users user=(Users)session.getAttribute("user");
+        System.out.println("user1="+user);
         mv.addObject("provinces", provinces);
         mv.addObject("df1", df1.format(new Date()));
         mv.addObject("df2", df2.format(new Date()));
