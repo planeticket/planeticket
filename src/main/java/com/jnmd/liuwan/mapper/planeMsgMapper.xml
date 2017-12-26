@@ -35,4 +35,8 @@
 		<select id="getPlaneMsg" parameterType="String" resultMap="PlaneMsg_all">
 			select * from plane_msg pm,plane_airport pa,province p,plane_company pc,plane_oil po where pm.pmstartcity=pa.paid and pm.pmendcity=p.cityid and pm.pcid=pc.pcid and pm.poid=po.poid and pacity=#{0} and cityname=#{1} ;
 		</select>
+		
+		<select id="getPlaneMsgById" parameterType="Integer" resultMap="PlaneMsg_all">
+			select * from plane_msg pm,plane_airport pa,province p,plane_company pc,plane_oil po where pm.pmstartcity=pa.paid and pm.pmendcity=p.cityid and pm.pcid=pc.pcid and pm.poid=po.poid and pmid=#{0}
+		</select>
 	</mapper>

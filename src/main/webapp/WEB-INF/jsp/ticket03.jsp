@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -109,26 +110,26 @@ display:none;
 			<div class="conright">
 				<p class="conrighttit">航班的起飞和到达时间为当地时间</p>
 				<div class="conrightticketinfo">
-					<p class="conrighttit2">去程11月10日 北京→台北</p>
-					<h3 class="conrightticketinfoh3">南方航空 CS3009 45 经济舱</h3>
+					<p class="conrighttit2">去程  <fmt:formatDate value="${planeMsgByid.startTime }" pattern="MM月dd日"/> ${planeMsgByid.planeAirport.paCity }→${planeMsgByid.province.cityName }</p>
+					<h3 class="conrightticketinfoh3">${planeMsgByid.planeCompany.pcName } ${planeMsgByid.pmFight }</h3>
 					<div class="chufadaoda">
 						<div class="chufa">
-							<p>2014年11月10日</p>
-							<p>12:45</p>
-							<p>首都机场T3</p>
+							<p><fmt:formatDate value="${planeMsgByid.startTime }" pattern="yyyy年MM月dd日"/></p>
+							<p><fmt:formatDate value="${planeMsgByid.startTime }" pattern="HH:mm:ss"/></p>
+							<p>${planeMsgByid.planeAirport.paName }</p>
 						</div>
 						<img src="img/ticket03/dajiantou_03.png" alt=""
 							class="yigejiantou">
 						<div class="daoda">
-							<p>2014年11月10日</p>
-							<p>12:45</p>
-							<p>首都机场T3</p>
+							<p><fmt:formatDate value="${planeMsgByid.endTime }" pattern="yyyy年MM月dd日"/></p>
+							<p><fmt:formatDate value="${planeMsgByid.endTime }" pattern="HH:mm:ss"/></p>
+							<p>${planeMsgByid.province.cityName }</p>
 						</div>
 
 					</div>
 
 				</div>
-				<h3 class="piaojiah3">票价：1680元（不含税费）</h3>
+				<h3 class="piaojiah3">票价：${planeMsgByid.pmPrice }元（不含税费）</h3>
 				<!-- 修改航班信息 -->
 				<div class="change">
 					<a href="javascript" id="leftaaa">【修改航班】</a> <a href="javascript">退改签</a>
@@ -136,7 +137,7 @@ display:none;
 				</div>
 				<h3 class="shouldpay">
 					应付金额
-					<var class="price">￥1680</var>
+					<var class="price">￥${planeMsgByid.pmPrice }</var>
 					<p>
 						明细（
 						<var>1</var>

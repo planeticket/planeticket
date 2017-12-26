@@ -19,4 +19,8 @@ public class planeMsgService {
         return planeMsgMapper.getPlaneMsg(pacity,cityname,startTime,endTime);
         
     }
+    
+    public PlaneMsg getPlaneMsgById(int id){
+        return planeMsgMapper.getPlaneMsgById(id);
+    }
 }

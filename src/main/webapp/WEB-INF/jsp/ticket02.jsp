@@ -110,12 +110,12 @@
 			</div>
 			<!-- band -->
 			<div class="band">
-				<span>北京</span> <span>台北</span> <span>共191个报价信息 , 搜索结束</span>
+				<span>${pacity}</span><span>${cityname}</span> <span>共${planeMsgs.size()}个报价信息 , 搜索结束</span>
 			</div>
 
 		</div>
 
-		<div class="travel">去程：北京→台北 11月10日（${planeMsgs.size()}个班次）</div>
+		<div class="travel">去程：${pacity}→${cityname} ${startTime}（${planeMsgs.size()}个班次）</div>
 
 
 		<div class="maincontent">
@@ -162,7 +162,8 @@
 						<p>机建+燃油 :${pmsg.planeOil.poCreate }+${pmsg.planeOil.poOil }</p>
 					</div>
 					<!-- 选定按钮 -->
-					<a class="button" href="ticket03.html">选定</a>
+					<a class="button" href="order?pmid=${pmsg.pmId}">选定</a>
+
 				</div>
 				</c:forEach>
 

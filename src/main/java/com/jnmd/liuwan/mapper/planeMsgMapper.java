@@ -10,4 +10,6 @@ import com.jnmd.liuwan.domain.PlaneMsg;
 @Repository
 public interface planeMsgMapper {
     public List<PlaneMsg> getPlaneMsg(String pacity,String cityname,Date startTime,Date endTime) throws Exception;
+    
+    public PlaneMsg getPlaneMsgById(int id);
 }
