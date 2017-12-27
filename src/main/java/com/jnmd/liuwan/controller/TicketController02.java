@@ -5,7 +5,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jnmd.liuwan.domain.PlaneMsg;
+import com.jnmd.liuwan.service.PlaneMsgByPageService;
 import com.jnmd.liuwan.domain.Users;
 import com.jnmd.liuwan.service.planeMsgService;
 
@@ -25,55 +28,63 @@ import com.jnmd.liuwan.service.planeMsgService;
 @Scope("prototype")
 public class TicketController02 {
     @Resource
-    private planeMsgService planeMsgService;
+    private PlaneMsgByPageService planeMsgByPageService;
     
-    @RequestMapping("/getMsg")
-    public ModelAndView getplaneMsg(HttpServletRequest request,String pacity,String cityname,@DateTimeFormat(pattern = "yyyy-MM-dd")Date startDay,@DateTimeFormat(pattern = "yyyy-MM-dd")Date endDay,String startTime,String endTime) throws Exception{
+    @RequestMapping("/getMsgByPage")
+    public ModelAndView getplaneMsg(String pacity,String cityname,@DateTimeFormat(pattern = "yyyy-MM-dd")Date startDay,@DateTimeFormat(pattern = "yyyy-MM-dd")Date endDay,String startTime,String endTime,Integer currentPage,Integer currentNum) throws Exception{
         HttpSession session=request.getSession();
         Users user=(Users)session.getAttribute("user");
-        ModelAndView mv = new ModelAndView();
         System.out.println("user2="+user);
         if(user!=null){
-//          System.out.println("pacity========"+pacity);
-//          System.out.println("cityname=======" +cityname);
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
           String day = sdf.format(startDay);
-//          SimpleDateFormat sdf1= new SimpleDateFormat("hh:mm:ss");
-//          String time = sdf1.format(startTime);
-//          System.out.println(time);
-//          String str = day+" "+time;
           String str1= day.toString();
+
           String str2 = startTime.toString()+":00";
           String str = str1+" "+str2;
+        
           SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-          SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
           Date d = sdf1.parse(str);
-          System.out.println(d);
-          List<PlaneMsg> planeMsgsbefore = planeMsgService.getPlaneMsg(pacity,cityname,startDay,endDay);
+          System.out.println(currentPage);
+          currentNum = 9;
+
+          List<PlaneMsg> planeMsgsbefore = planeMsgByPageService.getPlaneMsgByPage(pacity, cityname, startDay, endDay, currentPage,currentNum);
           List<PlaneMsg> planeMsgafter=new ArrayList<PlaneMsg>();
-          System.out.println(planeMsgsbefore);
           for(PlaneMsg i : planeMsgsbefore){
-              System.out.println(i.getPlaneAirport().getPaCity());
               if(i.getStartTime().after(d)){
                   planeMsgafter.add(i);
               }  
           }
-          System.out.println(planeMsgsbefore);
-          
-          
+
+          int count = planeMsgafter.size();
+          int totalPage = (int)Math.ceil((count*1.0)/9);
+
+          ModelAndView mv = new ModelAndView();
+          Map<String, Object> map = new HashMap<String,Object>();
           mv.addObject("planeMsgs", planeMsgafter);
-          mv.addObject("pacity", pacity);
-          mv.addObject("startDay", sdf2.format(startDay));
-          System.out.println(startDay);
-          mv.addObject("startTime", startTime);
-          mv.addObject("cityname", cityname);
-          mv.addObject("endDay", sdf2.format(endDay));
-          mv.addObject("endTime", endTime);
-          mv.setViewName("ticket02");
+          mv.addObject("pacity",pacity);
+          mv.addObject("cityname",cityname);
+          mv.addObject("startDay",startDay);
+
+          mv.addObject("totalPage", totalPage);
+          mv.addObject("currentNum", currentNum);
+
+          map.put("planeMsgs", planeMsgafter);
+          map.put("pacity", pacity);
+          map.put("cityname", cityname);
+          map.put("startDay", startDay);
+          map.put("totalPage", totalPage);
+          map.put("currentPage", currentPage);
+          map.put("currentNum", currentNum);
+          mv.addObject("map",map);
+          mv.setViewName("forward:/WEB-INF/jsp/ticket02.jsp");
           return mv;
+          
         }else{
             mv.setViewName("index2");
             return mv;
-        }        
+        }     
     }
+    
 }

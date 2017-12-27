@@ -170,18 +170,25 @@
 
 				<!-- 页码	 -->
 				<div class="page" id="yema">
-					<div>上一页</div>
-					<div>1</div>
-					<div>....</div>
-					<div>12</div>
-					<div>13</div>
-					<div>14</div>
-					<div>....</div>
-					<div>40</div>
-					<div>下一页</div>
+					<div><a href="getMsgByPage?currentPage=1&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">首页</a></div>
+					<div>
+						<c:if test="${currentPage==1 }">
+							上一页
+						</c:if>
+						<c:if test="${currentPage!=1 }">
+							<a href="getMsgByPage?currentPage=${currentPage-1 }&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">上一页</a>
+						</c:if>
+					</div>
+					<div>
+						<c:if test="${currentPage==totalPage }">
+							下一页
+						</c:if>
+						<c:if test="${currentPage!=totalPage }">
+							<a href="getMsgByPage?currentPage=${currentPage+1 }&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">下一页</a>
+						</c:if>
+					</div>
+					<div><a href="getMsgByPage?currentPage=${totalPage }&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">尾页</a></div>
 				</div>
-
-
 
 			</div>
 
