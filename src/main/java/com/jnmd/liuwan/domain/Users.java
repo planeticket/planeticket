@@ -1,9 +1,16 @@
 package com.jnmd.liuwan.domain;
 
 public class Users {
-    
+    private int uid;
     private String userName;
     private String password;
+    
+    public int getUid() {
+        return uid;
+    }
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
     public String getUserName() {
         return userName;
     }
@@ -24,9 +31,15 @@ public class Users {
         this.userName = userName;
         this.password = password;
     }
+    public Users(int uid, String userName, String password) {
+        super();
+        this.uid = uid;
+        this.userName = userName;
+        this.password = password;
+    }
     @Override
     public String toString() {
-        return "Users [userName=" + userName + ", password=" + password + "]";
+        return "Users [uid=" + uid + ", userName=" + userName + ", password=" + password + "]";
     }
     
     

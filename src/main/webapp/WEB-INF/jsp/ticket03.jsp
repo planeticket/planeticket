@@ -137,7 +137,7 @@ display:none;
 				</div>
 				<h3 class="shouldpay">
 					应付金额
-					<var class="price">￥${planeMsgByid.pmPrice }</var>
+					<var class="price">￥${planeMsgByid.pmPrice+planeMsgByid.planeOil.poCreate+planeMsgByid.planeOil.poOil }</var>
 					<p>
 						明细（
 						<var>1</var>
@@ -146,22 +146,22 @@ display:none;
 				</h3>
 				<div class="priceinfo">
 					<p>成人</p>
-					<var>￥1340×1人</var>
+					<var>￥${planeMsgByid.pmPrice}×1人</var>
 				</div>
 
 				<div class="priceinfo">
-					<p>机票税</p>
-					<var>￥300×1人</var>
+					<p>机建费</p>
+					<var>￥${planeMsgByid.planeOil.poCreate}×1人</var>
 				</div>
 
 				<div class="priceinfo">
 					<p>燃油费</p>
-					<var>￥40×1人</var>
+					<var>￥${planeMsgByid.planeOil.poOil}×1人</var>
 				</div>
 			</div>
 			<!-- 左边内容 -->
 			<div class="conleft">
-				<form method="post" action="#">
+				<form method="post" action="getPassenger">
 					<div class="passagers_msg">
 						<ul>
 							<li class="titbox">
