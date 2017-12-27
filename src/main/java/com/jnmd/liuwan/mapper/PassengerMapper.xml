@@ -24,4 +24,11 @@
 	<select id="getPassenger" parameterType="Integer" resultMap="getPassenger">
 		select * from passenger ps,t_user t,usertype ut where ut.tid=ps.tid and ps.uid=#{0};
 	</select>
+  
+  <insert id="savePassenger">	
+		<selectKey keyColumn="psgid" keyProperty="psgId" resultType="int" order="AFTER">
+			select @@identity as psgid;
+		</selectKey>
+		insert into passenger (psgname,tid,psgsex,psgcountry,psgbirthday,psgpaper,psgpapercode,uid) values (#{psgname},#{tid},#{psgsex},#{psgcountry},#{psgbirthday},#{psgpaper},#{psgpapercode},#{uid});
+	</insert>
 </mapper> 
