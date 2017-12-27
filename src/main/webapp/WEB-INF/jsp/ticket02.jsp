@@ -254,8 +254,7 @@
 			 radioId = $(this).attr('name');
 			 $('input[type="radio"]').removeAttr('checked') && $('#' + radioId).attr('checked', 'checked');
 			 $('input[type="radio"]').css('display','block')&& $('#' + radioId).css("display","none"); 
-		});
-		
+		});		
 	})
 </script>
 </body>
