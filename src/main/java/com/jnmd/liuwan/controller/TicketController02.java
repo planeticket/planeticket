@@ -31,11 +31,11 @@ public class TicketController02 {
         
         HttpSession session=request.getSession();
         Users user=(Users)session.getAttribute("user");
+        System.out.println(startDay);
         
         ModelAndView mv = new ModelAndView();
         if(user!=null){
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-          
           if (session.getAttribute("pacity") == null || session.getAttribute("cityname") == null || session.getAttribute("startDay") == null || session.getAttribute("startTime") == null) {
             session.setAttribute("pacity",pacity);
             session.setAttribute("cityname",cityname);
@@ -56,6 +56,7 @@ public class TicketController02 {
           String str = str1+" "+str2;
         
           SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+          SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
           Date d = sdf1.parse(str);
           
           int count = planeMsgByPageService.getCount(pacity, cityname,d);
@@ -75,7 +76,10 @@ public class TicketController02 {
           mv.addObject("planeMsgs", planeMsgafter);
           mv.addObject("pacity",pacity);
           mv.addObject("cityname",cityname);
-          mv.addObject("startDay",startDay);
+          mv.addObject("startDay",sdf2.format(startDay));
+          mv.addObject("endDay",sdf2.format(endDay));
+          mv.addObject("startTime",startTime);
+          mv.addObject("endTime",endTime);
 
           mv.addObject("totalPage", totalPage);
           mv.addObject("currentNum", currentNum);
