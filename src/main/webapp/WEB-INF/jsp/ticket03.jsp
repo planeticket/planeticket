@@ -180,7 +180,7 @@ display:none;
 			</div>
 			<!-- 左边内容 -->
 			<div class="conleft">
-				<form method="post" action="#">
+				<form method="post" action="getPassenger">
 					<div class="passagers_msg">
 						<ul>
 							<li class="titbox">

@@ -67,12 +67,11 @@ pageEncoding="UTF-8"%>
 		</div>
 		<div class="content">
 			<!-- conup -->
-			<form action="getMsg" method="post">
+			<form action="getMsgByPage?currentPage=1&currentNum=9" method="post">
 			<div class="upcon">
 				<div class="upconleft">
 					<div class="clickcity">
 						<div class="upconleftnormal onlygo">
-							<!-- <a href="javascript:;"></a>单程 -->
 							<label name="goway" class="checked" for="goway">
 							<input type="radio" name="goways" id="goway" value="单程" />
 							单程</label>

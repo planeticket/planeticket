@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.liuwan.mapper.ContactMapper">
+	<insert id="saveContact">	
+		<selectKey keyColumn="contact_id" keyProperty="contactId" resultType="int" order="AFTER">
+			select @@identity as contact_id;
+		</selectKey>
+		insert into contact (uid,contact_name,contact_phone,tid) values (#{uid},#{contact_name},#{contact_phone},#{tid});
+	</insert>
+</mapper>

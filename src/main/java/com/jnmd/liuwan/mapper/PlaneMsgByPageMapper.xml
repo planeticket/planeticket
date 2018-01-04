@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnmd.liuwan.mapper.PlaneMsgByPageMapper">
+
+	<!-- 分页查询航班信息 -->
+	<resultMap type="PlaneMsg" id="PlaneMsg_all">
+		<id column="pmId" property="pmId" />
+		<result column="pmFight" property="pmFight" />
+		<result column="pmstartTime" property="startTime" />
+		<result column="pmendTime" property="endTime" />
+		<result column="pmprice" property="pmPrice" />
+		<result column="pmduringtime" property="duringtime" />
+		<association property="planeAirport" javaType="PlaneAirport">
+			<id column="paId" property="paId" />
+			<result column="paName" property="paName" />
+			<result column="paCity" property="paCity" />
+		</association>
+		<association property="province" javaType="Province">
+			<id column="cityId" property="cityId" />
+			<result column="cityName" property="cityName" />
+		</association>
+		<association property="planeCompany" javaType="PlaneCompany">
+			<id column="pcId" property="pcId" />
+			<result column="pcName" property="pcName" />
+		</association>
+		<association property="planeOil" javaType="PlaneOil">
+			<id column="poId" property="poId" />
+			<result column="poCreate" property="poCreate" />
+			<result column="poOil" property="poOil" />
+		</association>
+	</resultMap>
+
+	<select id="getPlaneMsgByPage" resultMap="PlaneMsg_all">
+		select 
+			*
+		from
+			plane_msg pm,plane_airport pa,province p,plane_company pc,plane_oil po
+		where
+			pm.pmstartcity=pa.paid and pm.pmendcity=p.cityid
+		and 
+			pm.pcid=pc.pcid 
+		and 
+			pm.poid=po.poid 
+		and 
+			pacity=#{0}
+		and 
+			cityname=#{1}
+		and
+			pmstarttime>=#{2}
+		limit
+			#{3},#{4}
+	</select>
+	
+	<select id="getPlaneMsgById" parameterType="Integer" resultMap="PlaneMsg_all">
+		select 
+			* 
+		from 
+			plane_msg pm,plane_airport pa,province p,plane_company pc,plane_oil po 
+		where 
+			pm.pmstartcity=pa.paid 
+		and 
+			pm.pmendcity=p.cityid 
+		and 
+			pm.pcid=pc.pcid 
+		and 
+			pm.poid=po.poid 
+		and 
+			pmid=#{0}
+	</select>
+	
+	<select id="getCount" resultType="Integer">
+		select
+			count(*)
+		from
+			plane_msg pm,plane_airport pa,province p,plane_company pc,plane_oil po
+		where
+			pm.pmstartcity=pa.paid and pm.pmendcity=p.cityid
+		and 
+			pm.pcid=pc.pcid 
+		and 
+			pm.poid=po.poid 
+		and 
+			pacity=#{0}
+		and 
+			cityname=#{1}
+		and
+			pmstarttime>=#{2}
+	</select>
+	
+
+
+
+
+
+
+
+</mapper>
