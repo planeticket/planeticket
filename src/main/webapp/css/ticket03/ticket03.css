@@ -108,6 +108,7 @@
 }
 .classicbox .leftbutton{
 	margin-left: 71px;
+	display:none;
 }
 #xinzengyiweibutton{
 	margin-bottom: 0;
