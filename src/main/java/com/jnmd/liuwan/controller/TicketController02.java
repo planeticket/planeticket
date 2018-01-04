@@ -36,17 +36,21 @@ public class TicketController02 {
         ModelAndView mv = new ModelAndView();
         if(user!=null){
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-          if (session.getAttribute("pacity") == null || session.getAttribute("cityname") == null || session.getAttribute("startDay") == null || session.getAttribute("startTime") == null) {
+          if (session.getAttribute("pacity") == null || session.getAttribute("cityname") == null || session.getAttribute("startDay") == null || session.getAttribute("endDay") == null || session.getAttribute("startTime") == null || session.getAttribute("endTime") == null) {
             session.setAttribute("pacity",pacity);
             session.setAttribute("cityname",cityname);
             session.setAttribute("startDay",startDay);
+            session.setAttribute("endDay",endDay);
             session.setAttribute("startTime",startTime);
+            session.setAttribute("endTime",endTime);
           }
           
           pacity = (String) session.getAttribute("pacity");
           cityname = (String) session.getAttribute("cityname");
           startDay = (Date) session.getAttribute("startDay");
           startTime = (String) session.getAttribute("startTime");
+          endDay = (Date) session.getAttribute("endDay");
+          endTime = (String) session.getAttribute("endTime");
           
           
           String day = sdf.format(startDay);
