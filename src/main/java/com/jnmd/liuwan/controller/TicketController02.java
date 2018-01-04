@@ -58,12 +58,12 @@ public class TicketController02 {
           SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
           Date d = sdf1.parse(str);
           
-          int count = planeMsgByPageService.getCount(pacity, cityname);
+          int count = planeMsgByPageService.getCount(pacity, cityname,d);
           int totalPage = (int)Math.ceil((count*1.0)/currentNum);
          
           int start = (currentPage - 1)*currentNum;
 
-          List<PlaneMsg> planeMsgsbefore = planeMsgByPageService.getPlaneMsgByPage(pacity, cityname, startDay, endDay, start,currentNum);
+          List<PlaneMsg> planeMsgsbefore = planeMsgByPageService.getPlaneMsgByPage(pacity, cityname, d, endDay, start,currentNum);
           List<PlaneMsg> planeMsgafter=new ArrayList<PlaneMsg>();
           for(PlaneMsg i : planeMsgsbefore){
               if(i.getStartTime().after(d)){
