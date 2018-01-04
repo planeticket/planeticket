@@ -59,6 +59,7 @@ public class TicketController02 {
           Date d = sdf1.parse(str);
           
           int count = planeMsgByPageService.getCount(pacity, cityname,d);
+
           int totalPage = (int)Math.ceil((count*1.0)/currentNum);
          
           int start = (currentPage - 1)*currentNum;

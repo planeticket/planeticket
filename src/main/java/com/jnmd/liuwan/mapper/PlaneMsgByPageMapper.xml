@@ -87,7 +87,6 @@
 			cityname=#{1}
 		and
 			pmstarttime>=#{2}
-			
 	</select>
 	
 
