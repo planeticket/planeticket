@@ -13,4 +13,8 @@ public interface PlaneMsgByPageMapper {
     
     public PlaneMsg getPlaneMsgById(int id);
     
+    public int getCount(String pacity,String cityname);
+    
+    
+    
 }

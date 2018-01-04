@@ -110,12 +110,12 @@
 			</div>
 			<!-- band -->
 			<div class="band">
-				<span>${pacity}</span><span>${cityname}</span> <span>共${planeMsgs.size()}个报价信息 , 搜索结束</span>
+				<span>${pacity}</span><span>${cityname}</span> <span>共${count}个报价信息 , 搜索结束</span>
 			</div>
 
 		</div>
 
-		<div class="travel">去程：${pacity}→${cityname} ${startTime}（${planeMsgs.size()}个班次）</div>
+		<div class="travel">去程：${pacity}→${cityname} ${startTime}（${count}个班次）</div>
 
 
 		<div class="maincontent">
@@ -170,13 +170,13 @@
 
 				<!-- 页码	 -->
 				<div class="page" id="yema">
-					<div><a href="getMsgByPage?currentPage=1&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">首页</a></div>
+					<div><a href="getMsgByPage?currentPage=1&currentNum=${currentNum}">首页</a></div>
 					<div>
 						<c:if test="${currentPage==1 }">
 							上一页
 						</c:if>
 						<c:if test="${currentPage!=1 }">
-							<a href="getMsgByPage?currentPage=${currentPage-1 }&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">上一页</a>
+							<a href="getMsgByPage?currentPage=${currentPage-1 }&currentNum=${currentNum}">上一页</a>
 						</c:if>
 					</div>
 					<div>
@@ -184,10 +184,10 @@
 							下一页
 						</c:if>
 						<c:if test="${currentPage!=totalPage }">
-							<a href="getMsgByPage?currentPage=${currentPage+1 }&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">下一页</a>
+							<a href="getMsgByPage?currentPage=${currentPage + 1}&currentNum=${currentNum}">下一页</a>
 						</c:if>
 					</div>
-					<div><a href="getMsgByPage?currentPage=${totalPage }&currentNum=${currentNum}&planeMsgs=${map.planeMsgs}&pacity=${pacity}&cityname=${cityname}&startDay=${startDay}">尾页</a></div>
+					<div><a href="getMsgByPage?currentPage=${totalPage }&currentNum=${currentNum}">尾页</a></div>
 				</div>
 
 			</div>

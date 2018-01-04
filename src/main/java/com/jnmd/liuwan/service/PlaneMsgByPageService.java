@@ -21,10 +21,14 @@ public class PlaneMsgByPageService {
     private PlaneMsgByPageMapper planeMsgByPageMapper;
     
     public List<PlaneMsg> getPlaneMsgByPage(String pacity,String cityname,Date startTime,Date endTime,Integer currentPage,Integer currentNum){
-        return planeMsgByPageMapper.getPlaneMsgByPage(pacity, cityname,(currentPage-1)*9,currentNum);
+        return planeMsgByPageMapper.getPlaneMsgByPage(pacity, cityname,currentPage,currentNum);
     }
     
     public PlaneMsg getPlaneMsgById(int id){
         return planeMsgByPageMapper.getPlaneMsgById(id);
+    }
+    
+    public int getCount(String pacity,String cityname){
+        return planeMsgByPageMapper.getCount(pacity, cityname);
     }
 }

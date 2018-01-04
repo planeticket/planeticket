@@ -68,6 +68,24 @@
 			pmid=#{0}
 	</select>
 	
+	<select id="getCount" resultType="Integer">
+		select
+			count(*)
+		from
+			plane_msg pm,plane_airport pa,province p,plane_company pc,plane_oil po
+		where
+			pm.pmstartcity=pa.paid and pm.pmendcity=p.cityid
+		and 
+			pm.pcid=pc.pcid 
+		and 
+			pm.poid=po.poid 
+		and 
+			pacity=#{0}
+		and 
+			cityname=#{1}
+			
+	</select>
+	
 
 
 
