@@ -146,8 +146,8 @@ display:none;
 				</div>
 				<!-- 用于获取jstl标签内的内容 -->
 				<span id="adultPrice">${planeMsgByid.pmPrice }</span>
-				<span id="ticketPrice">${planeMsgByid.planeOil.pocreate }</span>
-				<span id="oilPrice">${planeMsgByid.planeOil.pooil }</span>
+				<span id="ticketPrice">${planeMsgByid.planeOil.poCreate }</span>
+				<span id="oilPrice">${planeMsgByid.planeOil.poOil }</span>
 				<h3 class="shouldpay">
 					应付金额
 					<%-- <span id="totalPrice">${planeMsgByid.pmPrice }</span> --%>
