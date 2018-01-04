@@ -20,15 +20,15 @@ public class PlaneMsgByPageService {
     @Resource
     private PlaneMsgByPageMapper planeMsgByPageMapper;
     
-    public List<PlaneMsg> getPlaneMsgByPage(String pacity,String cityname,Date startTime,Date endTime,Integer currentPage,Integer currentNum){
-        return planeMsgByPageMapper.getPlaneMsgByPage(pacity, cityname,currentPage,currentNum);
+    public List<PlaneMsg> getPlaneMsgByPage(String pacity,String cityname,Date startDay,Date endTime,Integer currentPage,Integer currentNum){
+        return planeMsgByPageMapper.getPlaneMsgByPage(pacity, cityname,startDay,currentPage,currentNum);
     }
     
     public PlaneMsg getPlaneMsgById(int id){
         return planeMsgByPageMapper.getPlaneMsgById(id);
     }
     
-    public int getCount(String pacity,String cityname){
-        return planeMsgByPageMapper.getCount(pacity, cityname);
+    public int getCount(String pacity,String cityname,Date startDay){
+        return planeMsgByPageMapper.getCount(pacity, cityname,startDay);
     }
 }

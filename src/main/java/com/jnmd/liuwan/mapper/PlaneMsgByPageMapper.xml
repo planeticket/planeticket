@@ -47,8 +47,10 @@
 			pacity=#{0}
 		and 
 			cityname=#{1}
+		and
+			pmstarttime>=#{2}
 		limit
-			#{2},#{3}
+			#{3},#{4}
 	</select>
 	
 	<select id="getPlaneMsgById" parameterType="Integer" resultMap="PlaneMsg_all">
@@ -83,7 +85,8 @@
 			pacity=#{0}
 		and 
 			cityname=#{1}
-			
+		and
+			pmstarttime>=#{2}
 	</select>
 	
 
