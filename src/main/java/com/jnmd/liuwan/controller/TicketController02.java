@@ -1,13 +1,9 @@
 package com.jnmd.liuwan.controller;
 
-import java.sql.Time;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,13 +27,28 @@ public class TicketController02 {
     private PlaneMsgByPageService planeMsgByPageService;
     
     @RequestMapping("/getMsgByPage")
-    public ModelAndView getplaneMsg(String pacity,String cityname,@DateTimeFormat(pattern = "yyyy-MM-dd")Date startDay,@DateTimeFormat(pattern = "yyyy-MM-dd")Date endDay,String startTime,String endTime,Integer currentPage,Integer currentNum) throws Exception{
+    public ModelAndView getplaneMsg(HttpServletRequest request,String pacity,String cityname,@DateTimeFormat(pattern = "yyyy-MM-dd")Date startDay,@DateTimeFormat(pattern = "yyyy-MM-dd")Date endDay,String startTime,String endTime,Integer currentPage,Integer currentNum) throws Exception{
+        
         HttpSession session=request.getSession();
         Users user=(Users)session.getAttribute("user");
-        System.out.println("user2="+user);
+        
+        ModelAndView mv = new ModelAndView();
         if(user!=null){
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+          
+          if (session.getAttribute("pacity") == null || session.getAttribute("cityname") == null || session.getAttribute("startDay") == null || session.getAttribute("startTime") == null) {
+            session.setAttribute("pacity",pacity);
+            session.setAttribute("cityname",cityname);
+            session.setAttribute("startDay",startDay);
+            session.setAttribute("startTime",startTime);
+          }
+          
+          pacity = (String) session.getAttribute("pacity");
+          cityname = (String) session.getAttribute("cityname");
+          startDay = (Date) session.getAttribute("startDay");
+          startTime = (String) session.getAttribute("startTime");
+          
+          
           String day = sdf.format(startDay);
           String str1= day.toString();
 
@@ -46,10 +57,13 @@ public class TicketController02 {
         
           SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
           Date d = sdf1.parse(str);
-          System.out.println(currentPage);
-          currentNum = 9;
+          
+          int count = planeMsgByPageService.getCount(pacity, cityname);
+          int totalPage = (int)Math.ceil((count*1.0)/currentNum);
+         
+          int start = (currentPage - 1)*currentNum;
 
-          List<PlaneMsg> planeMsgsbefore = planeMsgByPageService.getPlaneMsgByPage(pacity, cityname, startDay, endDay, currentPage,currentNum);
+          List<PlaneMsg> planeMsgsbefore = planeMsgByPageService.getPlaneMsgByPage(pacity, cityname, startDay, endDay, start,currentNum);
           List<PlaneMsg> planeMsgafter=new ArrayList<PlaneMsg>();
           for(PlaneMsg i : planeMsgsbefore){
               if(i.getStartTime().after(d)){
@@ -57,11 +71,6 @@ public class TicketController02 {
               }  
           }
 
-          int count = planeMsgafter.size();
-          int totalPage = (int)Math.ceil((count*1.0)/9);
-
-          ModelAndView mv = new ModelAndView();
-          Map<String, Object> map = new HashMap<String,Object>();
           mv.addObject("planeMsgs", planeMsgafter);
           mv.addObject("pacity",pacity);
           mv.addObject("cityname",cityname);
@@ -69,15 +78,9 @@ public class TicketController02 {
 
           mv.addObject("totalPage", totalPage);
           mv.addObject("currentNum", currentNum);
-
-          map.put("planeMsgs", planeMsgafter);
-          map.put("pacity", pacity);
-          map.put("cityname", cityname);
-          map.put("startDay", startDay);
-          map.put("totalPage", totalPage);
-          map.put("currentPage", currentPage);
-          map.put("currentNum", currentNum);
-          mv.addObject("map",map);
+          mv.addObject("count",count);
+          mv.addObject("currentPage", currentPage);
+          
           mv.setViewName("forward:/WEB-INF/jsp/ticket02.jsp");
           return mv;
           
