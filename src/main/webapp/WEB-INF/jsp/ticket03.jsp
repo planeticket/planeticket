@@ -60,6 +60,16 @@ width:0px;
 height:0px;
 display:none;
 }
+
+#children{
+	display:none;
+}
+#adult{
+	display:block;
+}
+#totalPrice,#adultPrice,#ticketPrice,#oilPrice{
+	display:none;
+}
 </style>
 </head>
 <body>
@@ -88,7 +98,6 @@ display:none;
 							<img src="img/common/phone_03.png" alt=""> <a href="javascript:;">400-800-8820</a>
 						</div>
 					</div>
-
 				</div>
 				<div class="con2">
 					<a class="posimg" href="javascript:;"><img
@@ -135,28 +144,38 @@ display:none;
 					<a href="javascript" id="leftaaa">【修改航班】</a> <a href="javascript">退改签</a>
 					<a href="javascript">购票说明</a>
 				</div>
+				<!-- 用于获取jstl标签内的内容 -->
+				<span id="adultPrice">${planeMsgByid.pmPrice }</span>
+				<span id="ticketPrice">${planeMsgByid.planeOil.pocreate }</span>
+				<span id="oilPrice">${planeMsgByid.planeOil.pooil }</span>
 				<h3 class="shouldpay">
 					应付金额
-					<var class="price">￥${planeMsgByid.pmPrice+planeMsgByid.planeOil.poCreate+planeMsgByid.planeOil.poOil }</var>
+					<%-- <span id="totalPrice">${planeMsgByid.pmPrice }</span> --%>
+					<var class="price"></var>
 					<p>
 						明细（
-						<var>1</var>
+						<var id="passenger"></var>
 						名乘客）
 					</p>
 				</h3>
-				<div class="priceinfo">
+				<div class="priceinfo" id="adult">
 					<p>成人</p>
-					<var>￥${planeMsgByid.pmPrice}×1人</var>
+					<var id="people"></var>
+				</div>
+				
+				<div class="priceinfo" id="children">
+					<p>儿童</p>
+					<var id="child"></var>
 				</div>
 
 				<div class="priceinfo">
-					<p>机建费</p>
-					<var>￥${planeMsgByid.planeOil.poCreate}×1人</var>
+					<p>机票税</p>
+					<var id="airTicket"></var>
 				</div>
 
 				<div class="priceinfo">
 					<p>燃油费</p>
-					<var>￥${planeMsgByid.planeOil.poOil}×1人</var>
+					<var id="oilprice"></var>
 				</div>
 			</div>
 			<!-- 左边内容 -->
@@ -183,7 +202,7 @@ display:none;
 									类型<span>*</span>
 								</h4>
 								<c:set var="type">成人,儿童</c:set>
-								<select name="usetype" class="classicdiv">
+								<select name="usetype" class="classicdiv type1">
 									<option>请选择</option>
 									<c:forEach items="${type }" var="ty">
 										<option value="${ty }"
@@ -255,100 +274,8 @@ display:none;
 							</li>
 							<!-- 新增确认按钮 -->
 							<li class="classicbox" id="xinzengyiweibutton">
-								<a href="javascript:;" id="leftbutton">新增一位登机人</a> <a
-									href="javascript:;">确认并保存身份信息</a>
-							</li>
-						</ul>
-						
-						<ul id="listadd">
-							<li class="titbox">
-								<h3 class="tith3">乘机人信息</h3>
-								<p class="titp">（请准确填写乘机人信息，以免在办理登记时发生问题，* 为必填项）</p>
-							</li>
-							<!-- 姓名 -->
-							<li class="classicbox">
-								<h4 class="classich4">
-									姓名<span>*</span><input type="text" name="uname"></input>
-								</h4>
-								<div class="classicdiv">
-									<input type="text" name="uname">
-								</div>
-							</li>
-							<!-- 类型 -->
-							<li class="classicbox">
-								<h4 class="classich4">
-									类型<span>*</span>
-								</h4>
-								<c:set var="type">成人,儿童</c:set>
-								<select name="usetype" class="classicdiv">
-									<option>请选择</option>
-									<c:forEach items="${type }" var="ty">
-										<option value="${ty }"
-											<c:if test="${param.type eq ty }">
-												selected
-											</c:if>
-										>${ty }</option>
-									</c:forEach>
-								</select>
-							</li>
-							<!-- 性别 -->
-							<li class="classicbox">
-								<h4 class="classich4">
-									性别<span>*</span>
-								</h4>
-								<c:set var="sex">男,女</c:set>
-								<select name="sex" class="classicdiv">
-									<option>请选择</option>
-									<c:forEach items="${sex }" var="s">
-										<option value="${s }"
-											<c:if test="${param.sex eq s }">
-												selected
-											</c:if>
-										>${s }</option>
-									</c:forEach>
-								</select>
-							</li>
-							<!-- 国籍 -->
-							<li class="classicbox">
-								<h4 class="classich4">
-									国籍<span>*</span>
-								</h4>
-								<div class="classicdiv">
-									<input type="text" name="country">
-								</div>
-							</li>
-							<!-- 出生日期 -->
-							<li class="classicbox">
-								<h4 class="classich4">
-									出生日期<span>*</span>
-								</h4>
-								<div class="classicdiv" id="bornday">
-									<input style="width:280px" type="text" name="birthday">
-								</div>
-							</li>
-							<!-- 证件信息 -->
-							<li class="classicbox">
-								<h4 class="classich4">
-									证件信息<span>*</span>
-								</h4>
-								<c:set var="papers">身份证,护照,台胞证,回乡证,军人证,港澳通行证,户口簿</c:set>
-								<select name="papersid" class="classicdiv">
-									<option>请选择</option>
-									<c:forEach items="${papers }" var="p">
-										<option value="${p }"
-											<c:if test="${param.papers eq p }">
-												selected
-											</c:if>
-										>${p }</option>
-									</c:forEach>
-								</select>
-								<div class="classicdiv" id="IDinfo">
-									<input style="width:281px" type="text" name="papersname">
-								</div>
-							</li>
-							<li class="classicbox" id="xinzengyiweibutton">
-								<a href="javascript:;" id="leftbutton">确认并保存身份信息</a>
-								<a href="javascript:;" id="returnbutton">返回</a>
+								<a href="javascript:;" class="leftbutton">新增一位登机人</a> 
+								<a href="javascript:;" class="savebutton">确认并保存身份信息</a>
 							</li>
 						</ul>
 					</div>
@@ -381,8 +308,7 @@ display:none;
 						<label for="xingcheng1" id="xingcheng" class="" >	
 							<input type="checkbox" id="xingcheng1" >
 						</label>	
-						<span>行程单(仅作为报销凭证，起飞后超过7天不可打印行程单)</span>
-							
+						<span>行程单(仅作为报销凭证，起飞后超过7天不可打印行程单)</span>							
 					</div>
 					<!-- 快递 -->
 					<div class="classicbox classicbox1">
@@ -514,7 +440,6 @@ display:none;
 			</div>
 		</div>
 	</div>
-</body>
 <script type="text/javascript">
 	var sheng=document.getElementById('sheng');
 	var shi=document.getElementById('shi');
@@ -565,7 +490,7 @@ display:none;
 </script>
 <script type="text/javascript">
 $('#xingcheng').click(function(){
-	
+		
 	 if($('.journey1 input').is(':checked')) {
 		$('#xingcheng').attr("class", "xingcheng");
 		this.style.border="none";
@@ -605,9 +530,9 @@ $('#baoxian').click(function(){
 		$('.fapiao select').attr("disabled","disabled");
 		$('.fapiao input').attr("disabled","disabled");
  		console.log("error");
- 	} 
-	
+ 	} 	
 })
+
 $('#accept').click(function(){
 	
 	 if($('.journey3 input').is(':checked')) {
@@ -628,15 +553,129 @@ $('#accept').click(function(){
 	
 })
 </script>
+
 <script>
-	var listadd=document.getElementById("listadd");
-	$('#leftbutton').click(function(){
-		var addpassager = $('#listadd').clone(true);
-		$('.passagers_msg').append(addpassager);
-			listadd.style.display='block';	
+	var children=document.getElementById("children");
+	var adult=document.getElementById("adult");
+	var addbutton=document.getElementById("xinzengyiweibutton");
+	var as=addbutton.getElementsByTagName('a');
+	var save;
+	var count=1;
+	var a=0;
+	var b=0;
+	var adultPrice=$('#adultPrice').text();
+	var ticketPrice=$('#ticketPrice').text();
+	var oilPrice=$('#oilPrice').text();
+	var c=parseInt(a)+parseInt(b);
+	var priceAdult;
+	var priceChild;
+	$("#people").text("￥"+adultPrice+"×"+a+"人");
+	$("#child").text("￥"+adultPrice*0.5+"×"+b+"人");	
+	function total(){
+		c=parseInt(a)+parseInt(b);
+		$("#airTicket").text("￥"+ticketPrice+"×"+c+"人");
+		$("#oilprice").text("￥"+oilPrice+"×"+c+"人");
+		$("#passenger").text(c);
+		priceAdult=(parseInt(adultPrice)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
+		priceChild=(parseInt(adultPrice*0.5)+parseInt(ticketPrice)+parseInt(oilPrice))*b;
+		$(".price").text("￥"+(parseInt(priceAdult)+parseInt(priceChild)));
+	}
+	total();
+	$('.savebutton').click(function(){	
+		save=$(".type1").val();		
+		if(save=="成人"){
+			children.style.display='none';
+			adult.style.display='block';
+			a=1;
+			b=0;
+			$("#people").text("￥"+adultPrice+"×"+a+"人");
+		}else if(save=="儿童"){
+			children.style.display='block';
+			adult.style.display='none';
+			a=0
+			b=1; 
+			$("#child").text("￥"+adultPrice*0.5+"×"+b+"人");
+		}else{
+			children.style.display='none';
+			adult.style.display='block';
+			a=0;
+			b=0;
+		}
+		total();
 	})
-	$('#returnbutton').click(function(){
-		this.parentNode.parentNode.style.display='none';
+	$('.returnbutton').click(function(){
+		this.parentNode.parentNode.remove();
+		as[1].className='savebutton';
+		save=$(".type1").val();
+		if(save=="成人"){
+			children.style.display='none';
+			adult.style.display='block';
+			a--;
+			priceAdult=(parseInt(adultPrice)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
+			$("#people").text("￥"+adultPrice+"×"+a+"人");
+			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
+			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
+			$("#passenger").text(a);
+			$(".price").text("￥"+priceAdult);
+		}else if(save=="儿童"){
+			children.style.display='block';
+			adult.style.display='none';
+			a--;
+			priceChild=(parseInt(adultPrice*0.5)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
+			$("#child").text("￥"+adultPrice*0.5+"×"+a+"人");
+			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
+			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
+			$("#passenger").text(a);
+			$(".price").text("￥"+priceChild);
+		}else{
+			children.style.display='none';
+			adult.style.display='block';
+			$("#people").text("￥1680×0人");
+			$("#child").text("￥670×0人");
+			$("#airTicket").text("￥300×0人");
+			$("#oilprice").text("￥40×0人");
+			$("#passenger").text(0);
+			$(".price").text("￥"+0);
+		}
+	})					
+	
+	$('.leftbutton').click(function(){
+		/* var addpassager = $(".passagers_msg ul:last-child").clone(true);
+		$('.passagers_msg').append(addpassager);
+		$('.listadd').css("display","block");
+		$(".passagers_msg ul:eq(2)").css("display","none"); */		
+		as[1].className=" ";
+		save=$(".type1").val();
+		if(save=="成人"){
+			children.style.display='none';
+			adult.style.display='block';
+			a++;
+			priceAdult=(parseInt(adultPrice)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
+			$("#people").text("￥"+adultPrice+"×"+a+"人");
+			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
+			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
+			$("#passenger").text(a);
+			$(".price").text("￥"+priceAdult);
+		}else if(save=="儿童"){
+			children.style.display='block';
+			adult.style.display='none';
+			a++;
+			priceChild=(parseInt(adultPrice*0.5)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
+			$("#child").text("￥"+adultPrice*0.5+"×"+a+"人");
+			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
+			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
+			$("#passenger").text(a);
+			$(".price").text("￥"+priceChild);
+		}else{
+			children.style.display='none';
+			adult.style.display='block';
+			$("#people").text("￥1680×0人");
+			$("#child").text("￥670×0人");
+			$("#airTicket").text("￥300×0人");
+			$("#oilprice").text("￥40×0人");
+			$("#passenger").text(0);
+			$(".price").text("￥"+0);
+		}
 	})
 </script>
 </html>

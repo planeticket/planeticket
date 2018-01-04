@@ -108,6 +108,7 @@
 }
 .classicbox .leftbutton{
 	margin-left: 71px;
+	display:none;
 }
 #xinzengyiweibutton{
 	margin-bottom: 0;
@@ -405,7 +406,7 @@
 	color: #3c3c3c;
 	background-color: white;
 }
-#listadd{
+.listadd{
 	width: 524px;
 	height:350px;
 	display:none;

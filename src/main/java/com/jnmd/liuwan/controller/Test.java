@@ -50,7 +50,5 @@ public class Test{
     public String login(){
         return "index2";
     }
-    
-    
-    
+  
 }
