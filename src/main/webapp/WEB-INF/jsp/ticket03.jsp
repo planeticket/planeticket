@@ -150,7 +150,7 @@ display:none;
 				<span id="oilPrice">${planeMsgByid.planeOil.poOil }</span>
 				<h3 class="shouldpay">
 					应付金额
-					<%-- <span id="totalPrice">${planeMsgByid.pmPrice }</span> --%>
+					<span id="totalPrice">${planeMsgByid.pmPrice }</span>
 					<var class="price"></var>
 					<p>
 						明细（
@@ -180,7 +180,7 @@ display:none;
 			</div>
 			<!-- 左边内容 -->
 			<div class="conleft">
-				<form method="post" action="getPassenger">
+				<form method="post" action="SaveController">
 					<div class="passagers_msg">
 						<ul>
 							<li class="titbox">
@@ -190,10 +190,13 @@ display:none;
 							<!-- 姓名 -->
 							<li class="classicbox">
 								<h4 class="classich4">
-									姓名<span>*</span><input type="text" name="uname"></input>
+									姓名<span>*</span>
 								</h4>
 								<div class="classicdiv">
-									<input type="text" name="uname">
+									<input type="text" name="psgName" value="${psgName}">
+									<%-- <font color="red" size="3">
+										${errMsgs["psgNameError"] }
+									</font> --%>
 								</div>
 							</li>
 							<!-- 类型 -->
@@ -201,17 +204,21 @@ display:none;
 								<h4 class="classich4">
 									类型<span>*</span>
 								</h4>
-								<c:set var="type">成人,儿童</c:set>
-								<select name="usetype" class="classicdiv type1">
+								<c:set var="usertypes">成人,儿童</c:set>
+								<select name="tid" class="classicdiv type">
 									<option>请选择</option>
-									<c:forEach items="${type }" var="ty">
-										<option value="${ty }"
-											<c:if test="${param.type eq ty }">
+									<c:forEach items="${usertypes }" var="ty" varStatus="status">
+										<option value="${status.count}"
+											<%-- <c:if test="${param.tid eq status.count }">
 												selected
-											</c:if>
-										>${ty }</option>
+											</c:if> --%>
+										>${ty}</option>
 									</c:forEach>
+									<%-- <font color="red" size="3">
+										${errMsgs["userTypeError"] }
+									</font> --%>
 								</select>
+		
 							</li>
 							<!-- 性别 -->
 							<li class="classicbox">
@@ -219,15 +226,18 @@ display:none;
 									性别<span>*</span>
 								</h4>
 								<c:set var="sex">男,女</c:set>
-								<select name="sex" class="classicdiv">
+								<select name="psgSex" class="classicdiv">
 									<option>请选择</option>
-									<c:forEach items="${sex }" var="s">
-										<option value="${s }"
-											<c:if test="${param.sex eq s }">
+									<c:forEach items="${sex }" var="s" varStatus="status">
+										<option value="${status.count}"
+											<c:if test="${param.psgSex eq status.count}">
 												selected
 											</c:if>
-										>${s }</option>
+										>${s}</option>
 									</c:forEach>
+									<font color="red" size="3">
+										${errMsgs["psgSexError"] }
+									</font>
 								</select>
 							</li>
 							<!-- 国籍 -->
@@ -236,7 +246,10 @@ display:none;
 									国籍<span>*</span>
 								</h4>
 								<div class="classicdiv">
-									<input type="text" name="country">
+									<input type="text" name="psgCountry" value="${psgCountry}">
+									<font color="red" size="3">
+										${errMsgs["psgCountryError"] }
+									</font>
 								</div>
 							</li>
 							<!-- 出生日期 -->
@@ -245,7 +258,10 @@ display:none;
 									出生日期<span>*</span>
 								</h4>
 								<div class="classicdiv" id="bornday">
-									<input style="width:280px" type="text" name="birthday">
+									<input style="width:280px" type="text" name="birthday" value="${psgBirthday}">
+									<font color="red" size="3">
+										${errMsgs["psgBirthdayError"] }
+									</font>
 								</div>
 							</li>
 							<!-- 证件信息 -->
@@ -254,18 +270,24 @@ display:none;
 									证件信息<span>*</span>
 								</h4>
 								<c:set var="papers">身份证,护照,台胞证,回乡证,军人证,港澳通行证,户口簿</c:set>
-								<select name="papersid" class="classicdiv">
+								<select name="psgPaper" class="classicdiv">
 									<option>请选择</option>
-									<c:forEach items="${papers }" var="p">
+									<c:forEach items="${papers}" var="p">
 										<option value="${p }"
-											<c:if test="${param.papers eq p }">
+											<c:if test="${param.psgPaper eq p }">
 												selected
 											</c:if>
 										>${p }</option>
 									</c:forEach>
+									<font color="red" size="3">
+										${errMsgs["psgPaperError"] }
+									</font>
 								</select>
 								<div class="classicdiv" id="IDinfo">
-									<input style="width:281px" type="text" name="papersname">
+									<input style="width:281px" type="text" name="psgPapercode" value="${psgPapercode}">
+									<font color="red" size="3">
+										${errMsgs["psgPapercodeError"]}
+									</font>
 								</div>
 							</li>
 							<!-- 为了您能够顺利登机 -->
@@ -274,7 +296,6 @@ display:none;
 							</li>
 							<!-- 新增确认按钮 -->
 							<li class="classicbox" id="xinzengyiweibutton">
-								<a href="javascript:;" class="leftbutton">新增一位登机人</a> 
 								<a href="javascript:;" class="savebutton">确认并保存身份信息</a>
 							</li>
 						</ul>
@@ -290,13 +311,13 @@ display:none;
 							联系人<span>*</span>
 						</h4>
 						<div class="classicdiv" id="contactcontperson">
-							<input type="text" name="contact_name">
+							<input type="text" name="contactName">
 						</div>
 						<h4 class="classich4">
 							联系方式<span>*</span>
 						</h4>
 						<div class="classicdiv" id="contactcontnumber">
-							<input style="width:190px" type="text" name="contact_phone">
+							<input style="width:190px" type="text" name="contactPhone">
 						</div>
 					</div>
 					<!-- 报销信息 -->
@@ -323,14 +344,14 @@ display:none;
 					<div class="classicbox classicbox1">
 						<h4 class="classich4">收件人</h4>
 						<div class="classicdiv" id="shoujianren">
-							<input style="width:281px" type="text" name="uname" disabled="disabled">
+							<input style="width:281px" type="text" name="prReceive" disabled="disabled">
 						</div>
 					</div>
 					<!-- 手机号码 -->
 					<div class="classicbox classicbox1">
 						<h4 class="classich4">手机号码</h4>
 						<div class="classicdiv" id="shoujianren">
-							<input style="width:281px" type="text" name="mphone" disabled="disabled">
+							<input style="width:281px" type="text" name="prPhone" disabled="disabled">
 						</div>
 					</div>
 						<!-- 配送地址 -->
@@ -355,7 +376,11 @@ display:none;
 					<div class="classicbox classicbox1">
 						<h4 class="classich4">邮政编码</h4>
 						<div class="classicdiv">
-							<input type="text" name="postcode" disabled="disabled">
+							<input type="text" name="prPostcode
+							
+							
+							
+							" disabled="disabled">
 						</div>
 					</div>
 					<!-- 保险发票 -->
@@ -368,7 +393,7 @@ display:none;
 					</div>
 					<div class="fapiao">
 						<h3 id="fapiaocon">发票类型</h3>
-						<select class="invoice_type" disabled="disabled">
+						<select class="invoice_type" disabled="disabled" name="prInvoiceType">
 							<option>增值税专用发票</option>
 							<option>普通发票</option>
 							<option>机动车专用发票</option>
@@ -377,7 +402,7 @@ display:none;
 					</div>
 					<div class="fapiao">
 						<h3 id="fapiaocon">发票抬头</h3>
-						<input type="text" name="invoice" disabled="disabled"></input>
+						<input type="text" name="prInvoiceTitle" disabled="disabled"></input>
 					</div>
 
 
@@ -582,14 +607,15 @@ $('#accept').click(function(){
 	}
 	total();
 	$('.savebutton').click(function(){	
-		save=$(".type1").val();		
-		if(save=="成人"){
+		save=$(".type").val();
+		console.log(save);
+		if(save==1){
 			children.style.display='none';
 			adult.style.display='block';
 			a=1;
 			b=0;
 			$("#people").text("￥"+adultPrice+"×"+a+"人");
-		}else if(save=="儿童"){
+		}else if(save==2){
 			children.style.display='block';
 			adult.style.display='none';
 			a=0
@@ -602,80 +628,8 @@ $('#accept').click(function(){
 			b=0;
 		}
 		total();
-	})
-	$('.returnbutton').click(function(){
-		this.parentNode.parentNode.remove();
-		as[1].className='savebutton';
-		save=$(".type1").val();
-		if(save=="成人"){
-			children.style.display='none';
-			adult.style.display='block';
-			a--;
-			priceAdult=(parseInt(adultPrice)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
-			$("#people").text("￥"+adultPrice+"×"+a+"人");
-			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
-			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
-			$("#passenger").text(a);
-			$(".price").text("￥"+priceAdult);
-		}else if(save=="儿童"){
-			children.style.display='block';
-			adult.style.display='none';
-			a--;
-			priceChild=(parseInt(adultPrice*0.5)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
-			$("#child").text("￥"+adultPrice*0.5+"×"+a+"人");
-			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
-			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
-			$("#passenger").text(a);
-			$(".price").text("￥"+priceChild);
-		}else{
-			children.style.display='none';
-			adult.style.display='block';
-			$("#people").text("￥1680×0人");
-			$("#child").text("￥670×0人");
-			$("#airTicket").text("￥300×0人");
-			$("#oilprice").text("￥40×0人");
-			$("#passenger").text(0);
-			$(".price").text("￥"+0);
-		}
-	})					
+	})				
 	
-	$('.leftbutton').click(function(){
-		/* var addpassager = $(".passagers_msg ul:last-child").clone(true);
-		$('.passagers_msg').append(addpassager);
-		$('.listadd').css("display","block");
-		$(".passagers_msg ul:eq(2)").css("display","none"); */		
-		as[1].className=" ";
-		save=$(".type1").val();
-		if(save=="成人"){
-			children.style.display='none';
-			adult.style.display='block';
-			a++;
-			priceAdult=(parseInt(adultPrice)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
-			$("#people").text("￥"+adultPrice+"×"+a+"人");
-			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
-			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
-			$("#passenger").text(a);
-			$(".price").text("￥"+priceAdult);
-		}else if(save=="儿童"){
-			children.style.display='block';
-			adult.style.display='none';
-			a++;
-			priceChild=(parseInt(adultPrice*0.5)+parseInt(ticketPrice)+parseInt(oilPrice))*a;
-			$("#child").text("￥"+adultPrice*0.5+"×"+a+"人");
-			$("#airTicket").text("￥"+ticketPrice+"×"+a+"人");
-			$("#oilprice").text("￥"+oilPrice+"×"+a+"人");
-			$("#passenger").text(a);
-			$(".price").text("￥"+priceChild);
-		}else{
-			children.style.display='none';
-			adult.style.display='block';
-			$("#people").text("￥1680×0人");
-			$("#child").text("￥670×0人");
-			$("#airTicket").text("￥300×0人");
-			$("#oilprice").text("￥40×0人");
-			$("#passenger").text(0);
-			$(".price").text("￥"+0);
-		}
-	})
+	
 </script>
 </html>

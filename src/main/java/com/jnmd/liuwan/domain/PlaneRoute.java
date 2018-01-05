@@ -8,7 +8,7 @@ public class PlaneRoute {
     private String prPostcode;
     private String prInvoiceType;
     private String prInvoiceTitle;
-    private Users users;
+    private int uid;
     public int getPrId() {
         return prId;
     }
@@ -51,14 +51,14 @@ public class PlaneRoute {
     public void setPrInvoiceTitle(String prInvoiceTitle) {
         this.prInvoiceTitle = prInvoiceTitle;
     }
-    public Users getUsers() {
-        return users;
+    public int getUid() {
+        return uid;
     }
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
     public PlaneRoute(int prId, String prReceive, String prPhone, String prAddress, String prPostcode,
-            String prInvoiceType, String prInvoiceTitle, Users users) {
+            String prInvoiceType, String prInvoiceTitle, int uid) {
         super();
         this.prId = prId;
         this.prReceive = prReceive;
@@ -67,13 +67,10 @@ public class PlaneRoute {
         this.prPostcode = prPostcode;
         this.prInvoiceType = prInvoiceType;
         this.prInvoiceTitle = prInvoiceTitle;
-        this.users = users;
-    }
-    public PlaneRoute() {
-        super();
+        this.uid = uid;
     }
     public PlaneRoute(String prReceive, String prPhone, String prAddress, String prPostcode,
-            String prInvoiceType, String prInvoiceTitle, Users users) {
+            String prInvoiceType, String prInvoiceTitle, int uid) {
         super();
         this.prReceive = prReceive;
         this.prPhone = prPhone;
@@ -81,16 +78,16 @@ public class PlaneRoute {
         this.prPostcode = prPostcode;
         this.prInvoiceType = prInvoiceType;
         this.prInvoiceTitle = prInvoiceTitle;
-        this.users = users;
+        this.uid = uid;
+    }
+    public PlaneRoute() {
+        super();
     }
     @Override
     public String toString() {
         return "PlaneRoute [prId=" + prId + ", prReceive=" + prReceive + ", prPhone=" + prPhone
                 + ", prAddress=" + prAddress + ", prPostcode=" + prPostcode + ", prInvoiceType="
-                + prInvoiceType + ", prInvoiceTitle=" + prInvoiceTitle + ", users=" + users + "]";
+                + prInvoiceType + ", prInvoiceTitle=" + prInvoiceTitle + ", uid=" + uid + "]";
     }
-    
-    
-    
     
 }
