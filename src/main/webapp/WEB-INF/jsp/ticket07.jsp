@@ -58,57 +58,57 @@
 					</div>
 					<div class="div2 comm">
 						<h3>联系人信息</h3>
-						<p>联系人：张晓华</p>
-						<p>联系手机：132345465</p>
+						<p>联系人：${contact.contactName }</p>
+						<p>联系手机：${contact.contactPhone }</p>
 					</div>
 					<div class="div3 comm">
 						<h3>订单信息</h3>
-						<p>总金额：￥1680</p>
+						<p>总金额：￥${planeMsgByid.pmPrice+planeMsgByid.planeOil.poOil+planeMsgByid.planeOil.poCreate }</p>
 					</div>
 				</div>
-				<a href="ticket01.html" class="upright">新增订单</a>
+				<a href="getMessage" class="upright">新增订单</a>
 			</div>
 
 			<div class="con">
 				<div class="conleft">
 					<h3>航班信息</h3>
 					<p>
-						去程11月10日
-						<var>北京→台北</var>
+						去程   <fmt:formatDate value="${planeMsgByid.startTime }" pattern="yyyy年MM月dd日"/>
+						<var>${planeMsgByid.planeAirport.paCity }→${planeMsgByid.province.cityName }</var>
 					</p>
 					<p>
-						南方航空
-						<var>CS3009 45</var>
+						${planeMsgByid.planeCompany.pcName }
+						<var>${planeMsgByid.pmFight }</var>
 						经济舱
 					</p>
 					<p>
-						2014年11月10日
-						<var>12:45</var>
-						首都机场T3
+						<fmt:formatDate value="${planeMsgByid.startTime }" pattern="yyyy年MM月dd日"/>
+						<var><fmt:formatDate value="${planeMsgByid.startTime }" pattern="HH:mm:ss"/></var>
+						${planeMsgByid.planeAirport.paName }
 					</p>
 					<p>
-						2014年11月11日
-						<var>12:45</var>
-						桃园机场
+						<fmt:formatDate value="${planeMsgByid.endTime }" pattern="yyyy年MM月dd日"/>
+						<var><fmt:formatDate value="${planeMsgByid.endTime }" pattern="HH:mm:ss"/></var>
+						${planeMsgByid.province.cityName }
 					</p>
 					<p class="bottomp">
 						应付金额
-						<var>￥1680</var>
+						<var>￥${planeMsgByid.pmPrice+planeMsgByid.planeOil.poOil+planeMsgByid.planeOil.poCreate }</var>
 						明细（1名乘客）
 					</p>
 					<div class="priceinfo">
 						<p>成人</p>
-						<var>￥1340×1人</var>
+						<var>￥${planeMsgByid.pmPrice }×1人</var>
 					</div>
 
 					<div class="priceinfo">
-						<p>机票税</p>
-						<var>￥300×1人</var>
+						<p>机建费</p>
+						<var>￥${planeMsgByid.planeOil.poCreate }×1人</var>
 					</div>
 
 					<div class="priceinfo">
 						<p>燃油费</p>
-						<var>￥40×1人</var>
+						<var>￥${planeMsgByid.planeOil.poOil}×1人</var>
 					</div>
 				</div>
 
@@ -120,12 +120,12 @@
 							class="xilaideng">
 						<div class="tupianyouce">
 
-							<p>去程11月10日</p>
-							<p>北京→台北</p>
+							<p>去程  <fmt:formatDate value="${planeMsgByid.startTime }" pattern="MM月dd日"/></p>
+							<p>${planeMsgByid.planeAirport.paCity } ${planeMsgByid.planeAirport.paName } → ${planeMsgByid.province.cityName }</p>
 
 						</div>
 					</div>
-					<h3 class="nanfanghangkong">南方航空 CS3009 45 经济舱</h3>
+					<h3 class="nanfanghangkong">${planeMsgByid.planeCompany.pcName } ${planeMsgByid.pmFight }  经济舱</h3>
 					<h3 class="piaojialeixing">票价类型：经济舱</h3>
 				</div>
 			</div>

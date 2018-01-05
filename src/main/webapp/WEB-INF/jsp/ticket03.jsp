@@ -357,15 +357,15 @@ display:none;
 						<!-- 配送地址 -->
 					<div class="classicbox classicbox1">
 						<h4 class="classich4">配送地址</h4>
-						<select id="sheng" class="classicdiv address" disabled="disabled">
+						<select id="sheng" class="classicdiv address" disabled="disabled" name="sheng">
 							<option value="-1">省份</option>
 						</select>
 						
-						<select id="shi" class="classicdiv address" disabled="disabled">
+						<select id="shi" class="classicdiv address" disabled="disabled" name="shi">
 							<option value="-1">城市</option>
 						</select>
 
-						<select id="qu" class="classicdiv address" disabled="disabled">
+						<select id="qu" class="classicdiv address" disabled="disabled" name="qu">
 							<option value="-1">区/县</option>
 						</select>
 						<div class="classicdiv" id="deladdress" disabled="disabled">
@@ -376,11 +376,7 @@ display:none;
 					<div class="classicbox classicbox1">
 						<h4 class="classich4">邮政编码</h4>
 						<div class="classicdiv">
-							<input type="text" name="prPostcode
-							
-							
-							
-							" disabled="disabled">
+							<input type="text" name="prPostcode" disabled="disabled">
 						</div>
 					</div>
 					<!-- 保险发票 -->

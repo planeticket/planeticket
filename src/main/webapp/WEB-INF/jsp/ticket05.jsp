@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,14 +64,13 @@
 			<!-- 订单信息 -->
 			<div class="dingdantit">
 				<p>订单金额</p>
-				<var>￥1680</var>
-
+				<var>${planeMsgByid.pmPrice+planeMsgByid.planeOil.poOil+planeMsgByid.planeOil.poCreate }</var>
 			</div>
 
 
 			<div class="dingdancon">
-				<p>单程机票：北京→台北</p>
-				<p>去程：北京 首都机场T3 → 桃园机场 出发日期：2014-11-10</p>
+				<p>单程机票：${planeMsgByid.planeAirport.paCity }→${planeMsgByid.province.cityName }</p>
+				<p>去程：${planeMsgByid.planeAirport.paCity } ${planeMsgByid.planeAirport.paName } → ${planeMsgByid.province.cityName } 出发日期：<fmt:formatDate value="${planeMsgByid.startTime }" pattern="yyyy年MM月dd日"/></p>
 
 			</div>
 
@@ -77,7 +78,7 @@
 
 			<p class="reminder">航班价格变动频繁，请在30分钟内完成支付</p>
 			<div class="biaozhundexuanze">
-				<h3 id="gaizihao">您一共需要支付：￥1680</h3>
+				<h3 id="gaizihao">您一共需要支付：${planeMsgByid.pmPrice+planeMsgByid.planeOil.poOil+planeMsgByid.planeOil.poCreate }</h3>
 			</div>
 			<!-- 支付方式 -->
 			<div id="card">
@@ -95,8 +96,8 @@
 
 
 			<!-- 提交订单 -->
-			<a href="ticket06.html" class="tijiaodingdan" id="tijiao">提交订单</a> <a
-				href="ticket04.html" id="xiugai">返回修改</a>
+			<a href="ticket06" class="tijiaodingdan" id="tijiao">提交订单</a> <a
+				href="SaveController" id="xiugai">返回修改</a>
 		</div>
 	</div>
 

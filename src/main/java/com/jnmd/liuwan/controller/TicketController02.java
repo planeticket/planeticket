@@ -76,7 +76,7 @@ public class TicketController02 {
                   planeMsgafter.add(i);
               }  
           }
-
+          
           mv.addObject("planeMsgs", planeMsgafter);
           mv.addObject("pacity",pacity);
           mv.addObject("cityname",cityname);

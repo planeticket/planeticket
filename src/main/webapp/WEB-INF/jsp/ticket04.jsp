@@ -109,7 +109,7 @@
 					<p class="titp">航班价格变动频繁，请在30分钟内完成支付以确保您的机位和价格</p>
 				</div>
 				
-				<c:forEach items="${pag}" var="ps">
+				
 				<div class="passengerinfo">
 					<ul class="passtit">
 						<li>乘机人</li>
@@ -122,13 +122,18 @@
 					</ul> 
 
 					<ul class="details">
-						<li>${ps.psgName}  （${ps.userType.tname }）   女</li>
+						<li>${ps.psgName}  （<c:if test="${ps.tid ==1}">
+							成人
+						</c:if>
+						<c:if test="${ps.tid ==2}">儿童</c:if>）   
+						<c:if test="${ps.psgSex==1 }">男</c:if>
+						<c:if test="${ps.psgSex==2 }">女</c:if>
+						</li>
 						<li></li><fmt:formatDate value="${ps.psgBirthday}"/>
 						
 						<li>${ps.psgCountry} ${ps.psgPaper }  ${ps.psgPapercode }</li>
 					</ul>
 				</div>
-				</c:forEach>
 				<div class="passengerinfo">`
 					<ul class="passtit">
 						<li>联系信息</li>
@@ -141,8 +146,8 @@
 					</ul> 
 
 					<ul class="details">
-						<li>LIU/NIAN  （成人）   女</li>
-						<li> 1345656567</li>
+						<li>${contact.contactName }</li>
+						<li> ${contact.contactPhone }</li>
 						
 					</ul>
 				</div>
@@ -150,8 +155,8 @@
 
 
 				<!-- 提交订单 -->
-				<a  href="ticket05.html"  class="tijiaodingdan" id="tijiao">提交订单</a>
-				<a  href="ticket03.html"   id="xiugai">返回修改</a>
+				<a  href="ticket05"  class="tijiaodingdan" id="tijiao">提交订单</a>
+				<a  href="order"   id="xiugai">返回修改</a>
 			</div>
 		</div>
 

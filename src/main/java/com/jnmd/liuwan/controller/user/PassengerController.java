@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -31,7 +34,8 @@ public class PassengerController {
     @Resource
     private PlaneRouteService planeRouteService;
     @RequestMapping("/SaveController")
-    public ModelAndView savePassenger(Passenger pass,String tid,String birthday,Contact contact,PlaneRoute planeRoute,String sheng,String shi,String qu) throws ParseException {
+    public ModelAndView savePassenger(HttpServletRequest request,Passenger pass,String tid,String birthday,Contact contact,PlaneRoute planeRoute,String sheng,String shi,String qu) throws ParseException {
+        HttpSession session = request.getSession();
         ModelAndView mv = new ModelAndView();
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
         Date psgBirthday=sf.parse(birthday);
@@ -46,10 +50,13 @@ public class PassengerController {
         System.out.println(contact);
         System.out.println(planeRoute);
         
+        session.setAttribute("contact", contact);
+        session.setAttribute("planeRoute", planeRoute);
         passengerService.savePassenger(pass);
         contactService.saveContact(contact);
+        
         mv.setViewName("ticket04");
-        mv.addObject("pag", pass);
+        mv.addObject("ps", pass);
         return mv;
     }
 
