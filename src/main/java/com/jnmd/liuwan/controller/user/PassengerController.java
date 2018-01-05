@@ -1,5 +1,8 @@
 package com.jnmd.liuwan.controller.user;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jnmd.liuwan.domain.Contact;
 import com.jnmd.liuwan.domain.Passenger;
 import com.jnmd.liuwan.domain.PlaneRoute;
+import com.jnmd.liuwan.service.ContactService;
 import com.jnmd.liuwan.service.PassengerService;
+import com.jnmd.liuwan.service.PlaneRouteService;
 
 
 @Controller
@@ -21,36 +26,41 @@ import com.jnmd.liuwan.service.PassengerService;
 public class PassengerController {
     @Resource
     private PassengerService passengerService;
-
-    @RequestMapping("/PassengerController")
-    public ModelAndView savePassenger(Passenger passenger,Contact contact,PlaneRoute planeRoute,String prAddress,String shi,String qu,String deladdress) {
+    @Resource
+    private ContactService contactService;
+    @Resource
+    private PlaneRouteService planeRouteService;
+    @RequestMapping("/SaveController")
+    public ModelAndView savePassenger(Passenger pass,String tid,String birthday,Contact contact,PlaneRoute planeRoute,String sheng,String shi,String qu) throws ParseException {
         ModelAndView mv = new ModelAndView();
-        System.out.println(prAddress+shi+qu+deladdress);
-        PassengerService passengerService=new PassengerService();
-        Map<String, String> map = validate(passenger, contact, planeRoute);
-        if (map.size() > 0) {
-            mv.setViewName("forward:ticket03.jsp");
-            mv.addObject("errMsgs", map);
-        } else {
-           
-            passengerService.savePassenger(passenger);
-            mv.setViewName("ticket04");
-
-        }
-
-        mv.addObject("passenger", passenger);
-
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        Date psgBirthday=sf.parse(birthday);
+        pass.setPsgBirthday(psgBirthday);
+        pass.setUid(10);
+        contact.setUid(10);
+        planeRoute.setUid(10);
+        String address = sheng+shi+qu;
+        planeRoute.setPrAddress(address);
+        System.out.println(pass);
+        System.out.println(tid);
+        System.out.println(contact);
+        System.out.println(planeRoute);
+        
+        passengerService.savePassenger(pass);
+        contactService.saveContact(contact);
+        mv.setViewName("ticket04");
+        mv.addObject("pag", pass);
         return mv;
     }
 
-    public Map<String, String> validate(Passenger passenger,Contact contact,PlaneRoute planeRoute) {
+    /*public Map<String, String> validate(Passenger passenger,Contact contact,PlaneRoute planeRoute) {
         Map<String, String> map = new HashMap<String, String>();
         if (null == passenger.getPsgName() || passenger.getPsgName().trim().equals("")) {
             map.put("psgNameError", "乘机人姓名必须输入!");
         } else if (passenger.getPsgName().trim().length() < 2) {
             map.put("psgNameError", "用户名长度不能少于2个!");
         }
-        if (0 == passenger.getUserType().getTid()) {
+        if (0 == passenger.getTid()) {
             map.put("userTypeError", "乘机人类型必须选择!");
         } 
         if (0 == passenger.getPsgSex()) {
@@ -108,5 +118,5 @@ public class PassengerController {
             map.put("prInvoiceTitleError", "发票抬头长度不能少于2个!");
         }
         return map;
-    }
+    }*/
 }

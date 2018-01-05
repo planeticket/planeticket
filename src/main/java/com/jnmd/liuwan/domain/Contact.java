@@ -2,21 +2,15 @@ package com.jnmd.liuwan.domain;
 
 public class Contact {
     private int contactId;
-    private Users users;
+    private int uid;
     private String contactName;
     private String contactPhone;
-    private UserType userType;
+    private int tid;
     public int getContactId() {
         return contactId;
     }
     public void setContactId(int contactId) {
         this.contactId = contactId;
-    }
-    public Users getUsers() {
-        return users;
-    }
-    public void setUsers(Users users) {
-        this.users = users;
     }
     public String getContactName() {
         return contactName;
@@ -30,34 +24,41 @@ public class Contact {
     public void setContactPhone(String contactPhone) {
         this.contactPhone = contactPhone;
     }
-    public UserType getUserType() {
-        return userType;
+    
+    public int getUid() {
+        return uid;
     }
-    public void setUserType(UserType userType) {
-        this.userType = userType;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
-    @Override
-    public String toString() {
-        return "Contact [contactId=" + contactId + ", users=" + users + ", contactName=" + contactName
-                + ", contactPhone=" + contactPhone + ", userType=" + userType + "]";
+    public int getTid() {
+        return tid;
     }
-    public Contact(int contactId, Users users, String contactName, String contactPhone, UserType userType) {
+    public void setTid(int tid) {
+        this.tid = tid;
+    }
+    public Contact(int contactId, int uid, String contactName, String contactPhone, int tid) {
         super();
         this.contactId = contactId;
-        this.users = users;
+        this.uid = uid;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
-        this.userType = userType;
+        this.tid = tid;
+    }
+    public Contact(int uid, String contactName, String contactPhone, int tid) {
+        super();
+        this.uid = uid;
+        this.contactName = contactName;
+        this.contactPhone = contactPhone;
+        this.tid = tid;
     }
     public Contact() {
         super();
     }
-    public Contact(Users users, String contactName, String contactPhone, UserType userType) {
-        super();
-        this.users = users;
-        this.contactName = contactName;
-        this.contactPhone = contactPhone;
-        this.userType = userType;
+    @Override
+    public String toString() {
+        return "Contact [contactId=" + contactId + ", uid=" + uid + ", contactName=" + contactName
+                + ", contactPhone=" + contactPhone + ", tid=" + tid + "]";
     }
     
 }

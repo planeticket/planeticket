@@ -109,7 +109,7 @@
 					<p class="titp">航班价格变动频繁，请在30分钟内完成支付以确保您的机位和价格</p>
 				</div>
 				
-				<c:forEach items="${passenger}" var="ps">
+				<c:forEach items="${pag}" var="ps">
 				<div class="passengerinfo">
 					<ul class="passtit">
 						<li>乘机人</li>

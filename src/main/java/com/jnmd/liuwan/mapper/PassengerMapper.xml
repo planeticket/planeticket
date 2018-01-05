@@ -11,14 +11,8 @@
 		<result column="psgbirthday" property="psgBirthday"/>
 		<result column="psgpaper" property="psgPaper"/>
 		<result column="psgpapercode" property="psgPapercode" />
-		<association property="userType" javaType="UserType" >
-			<id column="tid" property="tid"/>
-			<result column="tname" property="tname"/>
-		</association>
-		<association property="users" javaType="Users">
-			<id column="uid" property="uid"/>
-			<result column="username" property="userName"/>
-		</association>
+		<result column="tid" property="tid"/>
+		<result column="uid" property="uid"/>
 	</resultMap>
 	
 	<select id="getPassenger" parameterType="Integer" resultMap="getPassenger">
@@ -29,6 +23,6 @@
 		<selectKey keyColumn="psgid" keyProperty="psgId" resultType="int" order="AFTER">
 			select @@identity as psgid;
 		</selectKey>
-		insert into passenger (psgname,tid,psgsex,psgcountry,psgbirthday,psgpaper,psgpapercode,uid) values (#{psgname},#{tid},#{psgsex},#{psgcountry},#{psgbirthday},#{psgpaper},#{psgpapercode},#{uid});
+		insert into passenger (psgName,tid,psgSex,psgCountry,psgBirthday,psgPaper,psgPapercode,uid) values (#{psgName},#{tid},#{psgSex},#{psgCountry},#{psgBirthday},#{psgPaper},#{psgPapercode},#{uid});
 	</insert>
 </mapper> 

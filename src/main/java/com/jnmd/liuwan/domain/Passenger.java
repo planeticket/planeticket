@@ -5,13 +5,13 @@ import java.util.Date;
 public class Passenger {
     private int psgId;//乘客Id
     private String psgName;//乘客姓名
-    private UserType userType;//
+    private int tid;//
     private  int psgSex;
     private  String psgCountry;
     private  Date psgBirthday;
     private String psgPaper;
     private  String psgPapercode;
-    private Users users;
+    private int uid;
     public int getPsgId() {
         return psgId;
     }
@@ -23,12 +23,6 @@ public class Passenger {
     }
     public void setPsgName(String psgName) {
         this.psgName = psgName;
-    }
-    public UserType getUserType() {
-        return userType;
-    }
-    public void setUserType(UserType userType) {
-        this.userType = userType;
     }
     public int getPsgSex() {
         return psgSex;
@@ -60,51 +54,51 @@ public class Passenger {
     public void setPsgPapercode(String psgPapercode) {
         this.psgPapercode = psgPapercode;
     }
-    public Users getUsers() {
-        return users;
+    public int getTid() {
+        return tid;
     }
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setTid(int tid) {
+        this.tid = tid;
     }
-    
-    public Passenger(int psgId, String psgName, UserType userType, int psgSex, String psgCountry,
-            Date psgBirthday, String psgPaper, String psgPapercode, Users users) {
+    public int getUid() {
+        return uid;
+    }
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+    public Passenger(int psgId, String psgName, int tid, int psgSex, String psgCountry, Date psgBirthday,
+            String psgPaper, String psgPapercode, int uid) {
         super();
         this.psgId = psgId;
         this.psgName = psgName;
-        this.userType = userType;
+        this.tid = tid;
         this.psgSex = psgSex;
         this.psgCountry = psgCountry;
         this.psgBirthday = psgBirthday;
         this.psgPaper = psgPaper;
         this.psgPapercode = psgPapercode;
-        this.users = users;
+        this.uid = uid;
     }
-    
-    public Passenger(String psgName, UserType userType, int psgSex, String psgCountry, Date psgBirthday,
-            String psgPaper, String psgPapercode, Users users) {
+    public Passenger(String psgName, int tid, int psgSex, String psgCountry, Date psgBirthday,
+            String psgPaper, String psgPapercode, int uid) {
         super();
         this.psgName = psgName;
-        this.userType = userType;
+        this.tid = tid;
         this.psgSex = psgSex;
         this.psgCountry = psgCountry;
         this.psgBirthday = psgBirthday;
         this.psgPaper = psgPaper;
         this.psgPapercode = psgPapercode;
-        this.users = users;
+        this.uid = uid;
     }
-    
     public Passenger() {
         super();
     }
     @Override
     public String toString() {
-        return "Passager [psgId=" + psgId + ", psgName=" + psgName + ", userType=" + userType + ", psgSex="
-                + psgSex + ", psgCountry=" + psgCountry + ", psgBirthday=" + psgBirthday + ", psgPaper="
-                + psgPaper + ", psgPapercode=" + psgPapercode + ", users=" + users + "]";
+        return "Passenger [psgId=" + psgId + ", psgName=" + psgName + ", tid=" + tid + ", psgSex=" + psgSex
+                + ", psgCountry=" + psgCountry + ", psgBirthday=" + psgBirthday + ", psgPaper=" + psgPaper
+                + ", psgPapercode=" + psgPapercode + ", uid=" + uid + "]";
     }
-    
-    
-    
     
 }
