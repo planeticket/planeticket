@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,8 +58,8 @@
 		<div class="content">
 			<h3 class="biaotiti">
 				<img src="img/common/greenxiaogougou_03.png" alt="">您的订单已成功提交我们操作扣款，订单将在
-				<var>2014-11-20</var>
-				<var>13:00</var>
+				<var><fmt:formatDate value="${planeMsgByid.startTime }" pattern="yyyy年MM月dd日"/></var>
+				<var></var>
 				前给您确认，如果不能确认将全额退款至您的付款账户。
 			</h3>
 
@@ -69,11 +71,11 @@
 				</h3>
 				<h3>
 					总价：￥
-					<var>1524</var>
+					<var>${planeMsgByid.pmPrice+planeMsgByid.planeOil.poOil+planeMsgByid.planeOil.poCreate }</var>
 				</h3>
 				<div class="twobutton">
-					<a href="ticket07.html" class="chakanbutton">查看订单</a> <a
-						href="ticket01.html" class="chakanbutton" id="rightbutton">自订行程</a>
+					<a href="ticket07" class="chakanbutton">查看订单</a> <a
+						href="getMessage" class="chakanbutton" id="rightbutton">自订行程</a>
 				</div>
 				<p class="p1p">请确保您的手机号码填写正确，无效手机号可能会导致订单取消。</p>
 				<hr>
@@ -93,18 +95,18 @@
 						class="xilaideng">
 					<div class="tupianyouce">
 
-						<p>去程11月10日</p>
-						<p>北京→台北</p>
+						<p>去程  <fmt:formatDate value="${planeMsgByid.startTime }" pattern="MM月dd日"/></p>
+						<p>${planeMsgByid.planeAirport.paCity }→${planeMsgByid.province.cityName }</p>
 
 					</div>
 				</div>
-				<h3 class="nanfanghangkong">南方航空 CS3009 45 经济舱</h3>
-				<p class="shijian">2014年11月10日 12:45 首都机场T3</p>
-				<p class="shijian">2014年11月11日 12:45 桃园机场</p>
+				<h3 class="nanfanghangkong">${planeMsgByid.planeCompany.pcName} ${planeMsgByid.pmFight }  经济舱</h3>
+				<p class="shijian"><fmt:formatDate value="${planeMsgByid.startTime }" pattern="yyyy年MM月dd日"/> <fmt:formatDate value="${planeMsgByid.startTime }" pattern="HH:mm:ss"/> ${planeMsgByid.planeAirport.paName }</p>
+				<p class="shijian"><fmt:formatDate value="${planeMsgByid.endTime }" pattern="yyyy年MM月dd日"/> <fmt:formatDate value="${planeMsgByid.endTime }" pattern="HH:mm:ss"/> ${planeMsgByid.province.cityName }</p>
 
 				<div class="biaozhundexuanze realjine">
 					<h3 class="jiudianmingzi">应付金额</h3>
-					<var class="yingfujine">￥1524</var>
+					<var class="yingfujine">${planeMsgByid.pmPrice+planeMsgByid.planeOil.poOil+planeMsgByid.planeOil.poCreate }</var>
 					<p class="danjia">明细（1名乘客）</p>
 
 				</div>
