@@ -34,6 +34,7 @@ public class PassengerController {
     @Resource
     private PlaneRouteService planeRouteService;
     @RequestMapping("/SaveController")
+
     public ModelAndView savePassenger(HttpServletRequest request,Passenger pass,String tid,String birthday,Contact contact,PlaneRoute planeRoute,String sheng,String shi,String qu) throws ParseException {
         HttpSession session = request.getSession();
         ModelAndView mv = new ModelAndView();
